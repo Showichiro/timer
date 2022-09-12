@@ -16,7 +16,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.35.0",
     "react-timer-hook": "^3.0.5",
-    "react-uuid": "^1.0.3"
+    "react-uuid": "^1.0.3",
+    "use-sound": "^4.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",

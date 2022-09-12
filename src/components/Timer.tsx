@@ -4,13 +4,12 @@ import { Countdown, Button, Card } from "react-daisyui";
 import { TimerValue } from "../types/TimerValue";
 import EditModal from "./EditModal";
 import { sound } from "./sound";
+import useSound from "use-sound";
 
 type TimerProps = {
   defaultTimerValue?: TimerValue;
   onClickDelete: () => void;
 };
-const audio = new Audio(`data:audio/wav;base64,${sound}`);
-audio.volume = audio.volume / 2;
 
 const convertTimeValueToTimeStamp = ({
   hours,
@@ -34,12 +33,15 @@ export const Timer: FC<TimerProps> = ({
 }) => {
   const [inputMode, setInputMode] = useState(false);
   const timerValueRef = useRef(defaultTimerValue);
+  const [play] = useSound(`data:audio/wav;base64,${sound}`, {
+    volume: 0.5,
+  });
   const { hours, minutes, seconds, isRunning, pause, start, restart } =
     useTimer({
       expiryTimestamp: convertTimeValueToTimeStamp(timerValueRef.current),
       autoStart: false,
       onExpire: () => {
-        audio.play();
+        play();
       },
     });
   const isExpired = !(hours > 0 || minutes > 0 || seconds > 0);
