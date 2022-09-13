@@ -37,7 +37,7 @@ export const Timer: FC<TimerProps> = ({
   const [play] = useSound(`data:audio/wav;base64,${sound}`, {
     volume: 0.5,
   });
-  const { hours, minutes, seconds, isRunning, pause, start, restart } =
+  const { hours, minutes, seconds, isRunning, pause, start, restart, resume } =
     useTimer({
       expiryTimestamp: convertTimeValueToTimeStamp(timerValueRef.current),
       autoStart: false,
@@ -45,18 +45,25 @@ export const Timer: FC<TimerProps> = ({
         play();
       },
     });
+  const startRef = useRef(false);
+  const handleClickStart = useCallback(() => {
+    startRef.current = true;
+    start();
+  }, [start]);
+
   const isExpired = !(hours > 0 || minutes > 0 || seconds > 0);
 
-  const handleClickReset = useCallback(
-    () => restart(convertTimeValueToTimeStamp(timerValueRef.current), false),
-    [timerValueRef.current]
-  );
+  const handleClickReset = useCallback(() => {
+    startRef.current = false;
+    restart(convertTimeValueToTimeStamp(timerValueRef.current), false);
+  }, [timerValueRef.current]);
 
   const handleClickEdit = useCallback(() => setEditing(true), []);
   const handleClickClose = useCallback(() => setEditing(false), []);
 
   const handleClickComplete = useCallback((data: TimerValue) => {
     timerValueRef.current = data;
+    startRef.current = false;
     restart(convertTimeValueToTimeStamp(data), false);
   }, []);
 
@@ -88,7 +95,9 @@ export const Timer: FC<TimerProps> = ({
           </Card.Actions>
         </Card.Title>
         <Card.Body>
-          <div className="flex justify-center">
+          <div
+            className={`flex justify-center ${isExpired ? "text-red-700" : ""}`}
+          >
             <Countdown
               value={hours}
               className="text-4xl md:text-6xl lg:text-8xl"
@@ -106,9 +115,15 @@ export const Timer: FC<TimerProps> = ({
             s
           </div>
           <Card.Actions className="grid grid-cols-2 lg:grid-cols-4 pt-0.5">
-            <Button onClick={start} disabled={isRunning} size="md">
-              start
-            </Button>
+            {startRef.current ? (
+              <Button onClick={resume} disabled={isRunning} size="md">
+                resume
+              </Button>
+            ) : (
+              <Button onClick={handleClickStart} disabled={isRunning} size="md">
+                start
+              </Button>
+            )}
             <Button onClick={pause} disabled={!isRunning} size="md">
               pause
             </Button>
