@@ -5,6 +5,7 @@ import { TimerValue } from "../types/TimerValue";
 import EditModal from "./EditModal";
 import { sound } from "./sound";
 import useSound from "use-sound";
+import Title from "./Title";
 
 type TimerProps = {
   defaultTimerValue?: TimerValue;
@@ -31,11 +32,6 @@ export const Timer: FC<TimerProps> = ({
   },
   onClickDelete,
 }) => {
-  const [title, setTitle] = useState("タイマー");
-  const handleChangeTitle = useCallback(
-    ({ target: { value } }: { target: { value: string } }) => setTitle(value),
-    []
-  );
   const [editing, setEditing] = useState(false);
   const timerValueRef = useRef(defaultTimerValue);
   const [play] = useSound(`data:audio/wav;base64,${sound}`, {
@@ -71,14 +67,7 @@ export const Timer: FC<TimerProps> = ({
         bordered={false}
       >
         <Card.Title className="pl-2 pt-2 flex">
-          <input
-            className="basis-full text-2xl md:text-3xl lg:text-4xl truncate ..."
-            type="text"
-            size={6}
-            value={title}
-            onChange={handleChangeTitle}
-            onFocus={(e) => e.target.select()}
-          />
+          <Title />
           <Card.Actions className="flex-none pr-2">
             <Button onClick={onClickDelete} size="sm" shape="circle">
               <svg

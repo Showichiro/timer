@@ -1,4 +1,4 @@
-import { FC, useCallback } from "react";
+import { FC, memo, useCallback } from "react";
 import { Button, Modal } from "react-daisyui";
 import { useForm } from "react-hook-form";
 import { TimerValue } from "../types/TimerValue";
@@ -9,6 +9,44 @@ type ModalProps = {
   onClickClose: () => void;
   onClickComplete: (data: TimerValue) => void;
 };
+
+const HourOption = memo(() => (
+  <>
+    {[...Array(100)].map((_, i) => (
+      <option key={`hours-${i}`} value={i}>
+        {i}
+      </option>
+    ))}
+  </>
+));
+
+const MinutesOption = memo(() => (
+  <>
+    {[...Array(60)].map((_, i) => (
+      <option key={`minutes-${i}`} value={i}>
+        {i}
+      </option>
+    ))}
+  </>
+));
+
+const SecondsOption = memo(() => (
+  <>
+    {[...Array(60)].map((_, i) => (
+      <option key={`minutes-${i}`} value={i}>
+        {i}
+      </option>
+    ))}
+  </>
+));
+
+const SubmitButton = memo(() => (
+  <Modal.Actions>
+    <Button size="sm" type="submit">
+      complete
+    </Button>
+  </Modal.Actions>
+));
 
 const EditModal: FC<ModalProps> = ({
   isOpen,
@@ -69,11 +107,7 @@ const EditModal: FC<ModalProps> = ({
                 className="w-2/3 border-gray border-2"
                 {...register("hours")}
               >
-                {[...Array(100)].map((_, i) => (
-                  <option key={`hours-${i}`} value={i}>
-                    {i}
-                  </option>
-                ))}
+                <HourOption />
               </select>
               <span className="pl-1">h</span>
             </label>
@@ -83,11 +117,7 @@ const EditModal: FC<ModalProps> = ({
                 className="w-2/3 border-gray border-2"
                 {...register("minutes")}
               >
-                {[...Array(60)].map((_, i) => (
-                  <option key={`minutes-${i}`} value={i}>
-                    {i}
-                  </option>
-                ))}
+                <MinutesOption />
               </select>
               <span className="pl-1">m</span>
             </label>
@@ -97,20 +127,12 @@ const EditModal: FC<ModalProps> = ({
                 className="w-2/3 border-gray border-2"
                 {...register("seconds")}
               >
-                {[...Array(60)].map((_, i) => (
-                  <option key={`minutes-${i}`} value={i}>
-                    {i}
-                  </option>
-                ))}
+                <SecondsOption />
               </select>
               <span className="pl-1">s</span>
             </label>
           </div>
-          <Modal.Actions>
-            <Button size="sm" type="submit">
-              complete
-            </Button>
-          </Modal.Actions>
+          <SubmitButton />
         </form>
       </Modal.Body>
     </Modal>
