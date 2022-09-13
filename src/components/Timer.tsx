@@ -31,7 +31,12 @@ export const Timer: FC<TimerProps> = ({
   },
   onClickDelete,
 }) => {
-  const [inputMode, setInputMode] = useState(false);
+  const [title, setTitle] = useState("タイマー");
+  const handleChangeTitle = useCallback(
+    ({ target: { value } }: { target: { value: string } }) => setTitle(value),
+    []
+  );
+  const [editing, setEditing] = useState(false);
   const timerValueRef = useRef(defaultTimerValue);
   const [play] = useSound(`data:audio/wav;base64,${sound}`, {
     volume: 0.5,
@@ -51,8 +56,8 @@ export const Timer: FC<TimerProps> = ({
     [timerValueRef.current]
   );
 
-  const handleClickEdit = useCallback(() => setInputMode(true), []);
-  const handleClickClose = useCallback(() => setInputMode(false), []);
+  const handleClickEdit = useCallback(() => setEditing(true), []);
+  const handleClickClose = useCallback(() => setEditing(false), []);
 
   const handleClickComplete = useCallback((data: TimerValue) => {
     timerValueRef.current = data;
@@ -65,8 +70,16 @@ export const Timer: FC<TimerProps> = ({
         className={`border-2 ${isExpired ? "border-red-700" : "border-black"}`}
         bordered={false}
       >
-        <Card.Body>
-          <Card.Actions className="justify-end">
+        <Card.Title className="pl-2 pt-2 flex">
+          <input
+            className="basis-full text-2xl md:text-3xl lg:text-4xl truncate ..."
+            type="text"
+            size={6}
+            value={title}
+            onChange={handleChangeTitle}
+            onFocus={(e) => e.target.select()}
+          />
+          <Card.Actions className="flex-none pr-2">
             <Button onClick={onClickDelete} size="sm" shape="circle">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -84,6 +97,8 @@ export const Timer: FC<TimerProps> = ({
               </svg>
             </Button>
           </Card.Actions>
+        </Card.Title>
+        <Card.Body>
           <div className="flex justify-center">
             <Countdown
               value={hours}
@@ -119,7 +134,7 @@ export const Timer: FC<TimerProps> = ({
       </Card>
       <EditModal
         defaultValues={{ hours, minutes, seconds }}
-        isOpen={inputMode}
+        isOpen={editing}
         onClickClose={handleClickClose}
         onClickComplete={handleClickComplete}
       />
