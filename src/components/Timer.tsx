@@ -9,7 +9,10 @@ import Title from "./Title";
 
 type TimerProps = {
   defaultTimerValue?: TimerValue;
+  defaultTitle?: string;
   onClickDelete: () => void;
+  onEditTimerValue: (timerValue: TimerValue) => void;
+  onEditTitle: (title: string) => void;
 };
 
 const convertTimeValueToTimeStamp = ({
@@ -30,7 +33,10 @@ export const Timer: FC<TimerProps> = ({
     minutes: 6,
     seconds: 0,
   },
+  defaultTitle = "タイマー",
   onClickDelete,
+  onEditTimerValue,
+  onEditTitle,
 }) => {
   const [editing, setEditing] = useState(false);
   const timerValueRef = useRef(defaultTimerValue);
@@ -64,6 +70,7 @@ export const Timer: FC<TimerProps> = ({
   const handleClickComplete = useCallback((data: TimerValue) => {
     timerValueRef.current = data;
     startRef.current = false;
+    onEditTimerValue(data);
     restart(convertTimeValueToTimeStamp(data), false);
   }, []);
 
@@ -74,7 +81,7 @@ export const Timer: FC<TimerProps> = ({
         bordered={false}
       >
         <Card.Title className="pl-2 pt-2 flex">
-          <Title />
+          <Title defaultTitle={defaultTitle} onEditTitle={onEditTitle} />
           <Card.Actions className="flex-none pr-2">
             <Button onClick={onClickDelete} size="sm" shape="circle">
               <svg

@@ -1,23 +1,27 @@
 import AddButton from "./components/AddButton";
 import { Timer } from "./components/Timer";
-import { useTimerIdList } from "./hooks/useTimerIdList";
+import { useTimerList } from "./hooks/useTimerList";
 
 function App() {
-  const { idList, removeId, addNewId } = useTimerIdList();
+  const { timerList, removeTimer, addNewTimer, updateTimer } = useTimerList();
   return (
     <div className="p-2">
       <h1 className="font-black text-3xl">Timer</h1>
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
-        {idList.map((id) => (
+        {timerList.map((timer) => (
           <Timer
-            key={id}
-            onClickDelete={() => {
-              removeId(id);
-            }}
+            key={timer.id}
+            defaultTimerValue={timer.timerValue}
+            defaultTitle={timer.title}
+            onClickDelete={() => removeTimer(timer.id)}
+            onEditTimerValue={(timerValue) =>
+              updateTimer({ ...timer, timerValue })
+            }
+            onEditTitle={(title) => updateTimer({ ...timer, title })}
           />
         ))}
       </div>
-      <AddButton onClick={addNewId} />
+      <AddButton onClick={addNewTimer} />
     </div>
   );
 }
