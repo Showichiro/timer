@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { TimerValue } from "../types/TimerValue";
 
 type ModalProps = {
+  id: string;
   isOpen: boolean;
   defaultValues: TimerValue;
   onClickClose: () => void;
@@ -49,7 +50,7 @@ const SubmitButton = memo(() => (
 ));
 
 const EditModal: FC<ModalProps> = ({
-  isOpen,
+  id, isOpen,
   defaultValues,
   onClickClose,
   onClickComplete,
@@ -101,9 +102,9 @@ const EditModal: FC<ModalProps> = ({
       <Modal.Body>
         <form onSubmit={onSubmit(handleSubmit)}>
           <div className="grid grid-cols-3 gap-3 py-6">
-            <label htmlFor="hours">
+            <label htmlFor={`${id}-hours`}>
               <select
-                id="hours"
+                id={`${id}-hours`}
                 className="w-2/3 border-gray border-2"
                 {...register("hours")}
               >
@@ -111,9 +112,9 @@ const EditModal: FC<ModalProps> = ({
               </select>
               <span className="pl-1">h</span>
             </label>
-            <label htmlFor="minutes">
+            <label htmlFor={`${id}-minutes`}>
               <select
-                id="minutes"
+                id={`${id}-minutes`}
                 className="w-2/3 border-gray border-2"
                 {...register("minutes")}
               >
@@ -121,9 +122,9 @@ const EditModal: FC<ModalProps> = ({
               </select>
               <span className="pl-1">m</span>
             </label>
-            <label htmlFor="seconds">
+            <label htmlFor={`${id}-seconds`}>
               <select
-                id="seconds"
+                id={`${id}-seconds`}
                 className="w-2/3 border-gray border-2"
                 {...register("seconds")}
               >

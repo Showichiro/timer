@@ -13,6 +13,7 @@ function App() {
           {timerList.map((timer) => (
             <Timer
               key={timer.id}
+              id={timer.id}
               defaultTimerValue={timer.timerValue}
               defaultTitle={timer.title}
               onClickDelete={() => removeTimer(timer.id)}
