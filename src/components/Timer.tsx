@@ -8,6 +8,7 @@ import useSound from "use-sound";
 import Title from "./Title";
 
 type TimerProps = {
+  id: string;
   defaultTimerValue?: TimerValue;
   defaultTitle?: string;
   onClickDelete: () => void;
@@ -32,7 +33,7 @@ export const Timer: FC<TimerProps> = ({
     hours: 0,
     minutes: 6,
     seconds: 0,
-  },
+  }, id,
   defaultTitle = "タイマー",
   onClickDelete,
   onEditTimerValue,
@@ -83,7 +84,7 @@ export const Timer: FC<TimerProps> = ({
         <Card.Title className="pl-2 pt-2 flex">
           <Title defaultTitle={defaultTitle} onEditTitle={onEditTitle} />
           <Card.Actions className="flex-none pr-2">
-            <Button onClick={onClickDelete} size="sm" shape="circle">
+            <Button onClick={onClickDelete} size="sm" shape="circle" aria-label="delete timer">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -144,6 +145,7 @@ export const Timer: FC<TimerProps> = ({
         </Card.Body>
       </Card>
       <EditModal
+        id={id}
         defaultValues={{ hours, minutes, seconds }}
         isOpen={editing}
         onClickClose={handleClickClose}

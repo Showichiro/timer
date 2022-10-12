@@ -19,6 +19,7 @@ const Title: FC<TitleProps> = ({ defaultTitle = "タイマー", onEditTitle }) =
       defaultValue={defaultTitle}
       onBlur={handleBlur}
       onFocus={(e) => e.target.select()}
+      aria-label="timer name"
     />
   );
 };
