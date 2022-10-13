@@ -23,3 +23,6 @@ stats.html
 *.njsproj
 *.sln
 *.sw?
+
+# tauri
+src-tauri/target/
