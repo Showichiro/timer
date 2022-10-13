@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:tauri": "tsc && vite build --config ./vite.config.tauri.ts",
     "preview": "vite preview",
     "deploy": "rm -fr dist && ./deploy.sh",
     "tauri": "tauri"
