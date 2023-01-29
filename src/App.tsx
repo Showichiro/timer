@@ -9,7 +9,7 @@ function App() {
     <>
       <main className="p-2">
         <h1 className="font-black text-3xl">Timer</h1>
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 pt-2">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 pt-2">
           {timerList.map((timer) => (
             <Timer
               key={timer.id}
