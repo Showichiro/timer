@@ -1,9 +1,10 @@
-import { FC, useCallback, useMemo, useRef, useState } from "react";
+import { FC, useCallback, useRef, useState } from "react";
 import { useTimer } from "react-timer-hook";
 import { Countdown, Button, Card } from "react-daisyui";
 import { TimerValue } from "../types/TimerValue";
+import timeUpSound from "../assets/timeUpSound.mp3";
+import clickSound from "../assets/clickSound.mp3";
 import EditModal from "./EditModal";
-import { sound } from "./sound";
 import useSound from "use-sound";
 import Title from "./Title";
 
@@ -42,19 +43,20 @@ export const Timer: FC<TimerProps> = ({
 }) => {
   const [editing, setEditing] = useState(false);
   const timerValueRef = useRef(defaultTimerValue);
-  const [play] = useSound(`data:audio/wav;base64,${sound}`, {
-    volume: 0.5,
-  });
+  const [playTimeUpSound] = useSound(timeUpSound);
+  const [playClickSound] = useSound(clickSound);
   const { hours, minutes, seconds, isRunning, pause, start, restart, resume } =
     useTimer({
       expiryTimestamp: convertTimeValueToTimeStamp(timerValueRef.current),
       autoStart: false,
       onExpire: () => {
-        play();
+        playTimeUpSound();
       },
     });
+
   const startRef = useRef(false);
   const handleClickStart = useCallback(() => {
+    playClickSound();
     startRef.current = true;
     start();
   }, [start]);
@@ -116,8 +118,7 @@ export const Timer: FC<TimerProps> = ({
             h
             <Countdown value={minutes} className="text-8xl xl:text-9xl" />
             m
-            <Countdown value={seconds} className="text-8xl xl:text-9xl" />
-            s
+            <Countdown value={seconds} className="text-8xl xl:text-9xl" />s
           </div>
           <Card.Actions className="grid grid-cols-2 xl:grid-cols-4 pt-0.5 gap-x-8 gap-y-6 xl:gap-x-2">
             {startRef.current ? (
