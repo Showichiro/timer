@@ -33,7 +33,8 @@ export const Timer: FC<TimerProps> = ({
     hours: 0,
     minutes: 6,
     seconds: 0,
-  }, id,
+  },
+  id,
   defaultTitle = "タイマー",
   onClickDelete,
   onEditTimerValue,
@@ -84,7 +85,12 @@ export const Timer: FC<TimerProps> = ({
         <Card.Title className="pl-2 pt-2 flex">
           <Title defaultTitle={defaultTitle} onEditTitle={onEditTitle} />
           <Card.Actions className="flex-none pr-2">
-            <Button onClick={onClickDelete} size="sm" shape="circle" aria-label="delete timer">
+            <Button
+              onClick={onClickDelete}
+              size="sm"
+              shape="circle"
+              aria-label="delete timer"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -106,39 +112,30 @@ export const Timer: FC<TimerProps> = ({
           <div
             className={`flex justify-center ${isExpired ? "text-red-700" : ""}`}
           >
-            <Countdown
-              value={hours}
-              className="text-4xl md:text-6xl lg:text-8xl"
-            />
+            <Countdown value={hours} className="text-8xl xl:text-9xl" />
             h
-            <Countdown
-              value={minutes}
-              className="text-4xl md:text-6xl lg:text-8xl"
-            />
+            <Countdown value={minutes} className="text-8xl xl:text-9xl" />
             m
-            <Countdown
-              value={seconds}
-              className="text-4xl md:text-6xl lg:text-8xl"
-            />
+            <Countdown value={seconds} className="text-8xl xl:text-9xl" />
             s
           </div>
-          <Card.Actions className="grid grid-cols-2 lg:grid-cols-4 pt-0.5">
+          <Card.Actions className="grid grid-cols-2 xl:grid-cols-4 pt-0.5 gap-x-8 gap-y-6 xl:gap-x-2">
             {startRef.current ? (
-              <Button onClick={resume} disabled={isRunning} size="md">
+              <Button onClick={resume} disabled={isRunning} size="lg">
                 resume
               </Button>
             ) : (
-              <Button onClick={handleClickStart} disabled={isRunning} size="md">
+              <Button onClick={handleClickStart} disabled={isRunning} size="lg">
                 start
               </Button>
             )}
-            <Button onClick={pause} disabled={!isRunning} size="md">
+            <Button onClick={pause} disabled={!isRunning} size="lg">
               pause
             </Button>
-            <Button onClick={handleClickReset} size="md">
+            <Button onClick={handleClickReset} size="lg">
               reset
             </Button>
-            <Button onClick={handleClickEdit} disabled={isRunning} size="md">
+            <Button onClick={handleClickEdit} disabled={isRunning} size="lg">
               edit
             </Button>
           </Card.Actions>

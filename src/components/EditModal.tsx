@@ -50,7 +50,8 @@ const SubmitButton = memo(() => (
 ));
 
 const EditModal: FC<ModalProps> = ({
-  id, isOpen,
+  id,
+  isOpen,
   defaultValues,
   onClickClose,
   onClickComplete,
