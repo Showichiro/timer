@@ -1,7 +1,6 @@
 import AddButton from "./components/AddButton";
 import { Timer } from "./components/Timer";
 import { useTimerList } from "./hooks/useTimerList";
-import Footer from "./shared/Footer";
 
 function App() {
   const { timerList, removeTimer, addNewTimer, updateTimer } = useTimerList();
@@ -26,7 +25,6 @@ function App() {
         </div>
         <AddButton onClick={addNewTimer} />
       </main>
-      <Footer />
     </>
   );
 }
