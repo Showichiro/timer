@@ -1,12 +1,13 @@
 import { FC, useCallback, useRef, useState } from "react";
 import { useTimer } from "react-timer-hook";
-import { Countdown, Button, Card } from "react-daisyui";
+import { Button, Card } from "react-daisyui";
 import { TimerValue } from "../types/TimerValue";
 import timeUpSound from "../assets/timeUpSound.mp3";
 import clickSound from "../assets/clickSound.mp3";
-import EditModal from "./EditModal";
 import useSound from "use-sound";
 import Title from "./Title";
+import { Edit } from "./Edit";
+import { Count } from "./Count";
 
 type TimerProps = {
   id: string;
@@ -30,18 +31,17 @@ const convertTimeValueToTimeStamp = ({
 };
 
 export const Timer: FC<TimerProps> = ({
+  id,
   defaultTimerValue = {
     hours: 0,
     minutes: 6,
     seconds: 0,
   },
-  id,
   defaultTitle = "タイマー",
   onClickDelete,
   onEditTimerValue,
   onEditTitle,
 }) => {
-  const [editing, setEditing] = useState(false);
   const timerValueRef = useRef(defaultTimerValue);
   const [playTimeUpSound] = useSound(timeUpSound);
   const [playClickSound] = useSound(clickSound);
@@ -68,87 +68,101 @@ export const Timer: FC<TimerProps> = ({
     restart(convertTimeValueToTimeStamp(timerValueRef.current), false);
   }, [timerValueRef.current]);
 
-  const handleClickEdit = useCallback(() => setEditing(true), []);
-  const handleClickClose = useCallback(() => setEditing(false), []);
-
-  const handleClickComplete = useCallback((data: TimerValue) => {
-    timerValueRef.current = data;
-    startRef.current = false;
-    onEditTimerValue(data);
-    restart(convertTimeValueToTimeStamp(data), false);
-  }, []);
+  const [isEditing, setIsEditing] = useState(false);
 
   return (
-    <>
-      <Card
-        className={`border-2 ${isExpired ? "border-red-700" : "border-black"}`}
-        bordered={false}
-      >
-        <Card.Title className="pl-2 pt-2 flex">
-          <Title defaultTitle={defaultTitle} onEditTitle={onEditTitle} />
-          <Card.Actions className="flex-none pr-2">
-            <Button
-              onClick={onClickDelete}
-              size="sm"
-              shape="circle"
-              aria-label="delete timer"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </Button>
-          </Card.Actions>
-        </Card.Title>
-        <Card.Body>
-          <div
-            className={`flex justify-center ${isExpired ? "text-red-700" : ""}`}
+    <Card
+      className={`border-2 ${
+        isExpired ? "border-red-700" : "border-black dark:border-slate-400"
+      }`}
+      bordered={false}
+    >
+      <Card.Title className="pl-2 pt-2 flex">
+        <Title defaultTitle={defaultTitle} onEditTitle={onEditTitle} />
+        <Card.Actions className="flex-none pr-2">
+          <Button
+            onClick={onClickDelete}
+            size="sm"
+            shape="circle"
+            aria-label="delete timer"
           >
-            <Countdown value={hours} className="text-8xl xl:text-9xl" />
-            h
-            <Countdown value={minutes} className="text-8xl xl:text-9xl" />
-            m
-            <Countdown value={seconds} className="text-8xl xl:text-9xl" />s
-          </div>
-          <Card.Actions className="grid grid-cols-2 xl:grid-cols-4 pt-0.5 gap-x-8 gap-y-6 xl:gap-x-2">
-            {startRef.current ? (
-              <Button onClick={resume} disabled={isRunning} size="lg">
-                resume
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </Button>
+        </Card.Actions>
+      </Card.Title>
+      <Card.Body>
+        {isEditing && (
+          <Edit
+            id={id}
+            defaultValues={{ hours, minutes, seconds }}
+            onClick:cancel={() => setIsEditing(false)}
+            onClick:confirm={(timerValue) => {
+              timerValueRef.current = timerValue;
+              startRef.current = false;
+              onEditTimerValue(timerValue);
+              restart(convertTimeValueToTimeStamp(timerValue), false);
+              setIsEditing(false);
+            }}
+          />
+        )}
+        {!isEditing && (
+          <>
+            <div onClick={() => setIsEditing(true)}>
+              <Count
+                isExpired={isExpired}
+                hours={hours}
+                minutes={minutes}
+                seconds={seconds}
+              />
+            </div>
+            <Card.Actions className="grid grid-cols-3 xl:grid-cols-3 pt-0.5 gap-x-6 gap-y-6 xl:gap-x-2">
+              {startRef.current ? (
+                <Button
+                  onClick={resume}
+                  disabled={isRunning}
+                  size="lg"
+                  color="primary"
+                >
+                  resume
+                </Button>
+              ) : (
+                <Button
+                  onClick={handleClickStart}
+                  disabled={isRunning}
+                  size="lg"
+                  color="primary"
+                >
+                  start
+                </Button>
+              )}
+              <Button
+                onClick={pause}
+                disabled={!isRunning}
+                size="lg"
+                color="secondary"
+              >
+                pause
               </Button>
-            ) : (
-              <Button onClick={handleClickStart} disabled={isRunning} size="lg">
-                start
+              <Button onClick={handleClickReset} size="lg" color="accent">
+                reset
               </Button>
-            )}
-            <Button onClick={pause} disabled={!isRunning} size="lg">
-              pause
-            </Button>
-            <Button onClick={handleClickReset} size="lg">
-              reset
-            </Button>
-            <Button onClick={handleClickEdit} disabled={isRunning} size="lg">
-              edit
-            </Button>
-          </Card.Actions>
-        </Card.Body>
-      </Card>
-      <EditModal
-        id={id}
-        defaultValues={{ hours, minutes, seconds }}
-        isOpen={editing}
-        onClickClose={handleClickClose}
-        onClickComplete={handleClickComplete}
-      />
-    </>
+            </Card.Actions>
+          </>
+        )}
+      </Card.Body>
+    </Card>
   );
 };

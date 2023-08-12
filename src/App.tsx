@@ -12,8 +12,8 @@ function App() {
         <div className="grid grid-cols-1 xl:grid-cols-3 gap-3 pt-2">
           {timerList.map((timer) => (
             <Timer
-              key={timer.id}
               id={timer.id}
+              key={timer.id}
               defaultTimerValue={timer.timerValue}
               defaultTitle={timer.title}
               onClickDelete={() => removeTimer(timer.id)}
