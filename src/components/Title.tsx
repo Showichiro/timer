@@ -13,7 +13,7 @@ const Title: FC<TitleProps> = ({ defaultTitle = "タイマー", onEditTitle }) =
   );
   return (
     <input
-      className="basis-full dark:bg-gray-700 dark:text-gray-200 h-14 text-2xl md:text-3xl lg:text-4xl truncate ..."
+      className="timer-title basis-full dark:bg-gray-700 dark:text-gray-200 h-14 text-2xl md:text-3xl lg:text-4xl truncate ..."
       type="text"
       size={6}
       defaultValue={defaultTitle}

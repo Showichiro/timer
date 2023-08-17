@@ -84,6 +84,7 @@ export const Timer: FC<TimerProps> = ({
             onClick={onClickDelete}
             size="sm"
             shape="circle"
+            className="timer-delete"
             aria-label="delete timer"
           >
             <svg
@@ -120,7 +121,7 @@ export const Timer: FC<TimerProps> = ({
         )}
         {!isEditing && (
           <>
-            <div onClick={() => setIsEditing(true)}>
+            <div onClick={() => setIsEditing(true)} className="timer-count">
               <Count
                 isExpired={isExpired}
                 hours={hours}
@@ -128,7 +129,7 @@ export const Timer: FC<TimerProps> = ({
                 seconds={seconds}
               />
             </div>
-            <Card.Actions className="grid grid-cols-3 xl:grid-cols-3 pt-0.5 gap-x-6 gap-y-6 xl:gap-x-2">
+            <Card.Actions className="timer-action grid grid-cols-3 xl:grid-cols-3 pt-0.5 gap-x-6 gap-y-6 xl:gap-x-2">
               {startRef.current ? (
                 <Button
                   onClick={resume}

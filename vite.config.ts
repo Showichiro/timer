@@ -43,5 +43,8 @@ export default defineConfig({
         sourcemap: true
       }
     }
+  },
+  define: {
+    global: 'window',
   }
 });

@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useReducer } from "react";
 import uuid from "react-uuid";
 import { TimerValue } from "../types/TimerValue";
+import { isLocalStorageAvailable } from "../utils/localStorageUtil";
 
 type Timer = {
   id: string;
@@ -12,17 +13,17 @@ type State = Timer[];
 
 type Action =
   | {
-      type: "addNewTimer";
-      args: { id: string };
-    }
+    type: "addNewTimer";
+    args: { id: string };
+  }
   | {
-      type: "updateTimer";
-      args: Timer;
-    }
+    type: "updateTimer";
+    args: Timer;
+  }
   | {
-      type: "removeTimer";
-      args: { id: string };
-    };
+    type: "removeTimer";
+    args: { id: string };
+  };
 
 const reducer = (state: State, action: Action): Timer[] => {
   switch (action.type) {
@@ -51,16 +52,6 @@ const reducer = (state: State, action: Action): Timer[] => {
 
 const key = "timerList";
 
-const isLocalStorageAvailable = () => {
-  try {
-    const test = "test";
-    localStorage.setItem(test, "test");
-    localStorage.removeItem(test);
-    return true;
-  } catch (e) {
-    return false;
-  }
-};
 
 const defaultValue = [{ id: uuid(), timerValue: undefined, title: undefined }];
 

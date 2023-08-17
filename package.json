@@ -17,6 +17,7 @@
     "react-daisyui": "^4.0.4",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.4",
+    "react-joyride": "^2.5.5",
     "react-timer-hook": "^3.0.7",
     "react-uuid": "^2.0.0",
     "use-sound": "^4.0.1"
