@@ -1,4 +1,4 @@
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback } from "react";
 
 type TitleProps = {
   defaultTitle?: string;
@@ -9,7 +9,7 @@ const Title: FC<TitleProps> = ({ defaultTitle = "タイマー", onEditTitle }) =
   const handleBlur = useCallback(
     ({ target: { value } }: { target: { value: string } }) =>
       onEditTitle(value),
-    [onEditTitle]
+    [onEditTitle],
   );
   return (
     <input

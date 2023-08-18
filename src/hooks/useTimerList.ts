@@ -14,17 +14,17 @@ type State = Timer[];
 
 type Action =
   | {
-    type: "addNewTimer";
-    args: { id: string };
-  }
+      type: "addNewTimer";
+      args: { id: string };
+    }
   | {
-    type: "updateTimer";
-    args: Timer;
-  }
+      type: "updateTimer";
+      args: Timer;
+    }
   | {
-    type: "removeTimer";
-    args: { id: string };
-  };
+      type: "removeTimer";
+      args: { id: string };
+    };
 
 const reducer = (state: State, action: Action): Timer[] => {
   switch (action.type) {
@@ -37,7 +37,7 @@ const reducer = (state: State, action: Action): Timer[] => {
     case "updateTimer": {
       const { args: timer } = action;
       return state.map((element) =>
-        element.id === timer.id ? timer : element
+        element.id === timer.id ? timer : element,
       );
     }
     case "removeTimer": {
@@ -53,7 +53,6 @@ const reducer = (state: State, action: Action): Timer[] => {
 
 const key = "timerList";
 
-
 const defaultValue = [{ id: uuid(), timerValue: undefined, title: undefined }];
 
 const initializer = (): Timer[] => {
@@ -65,7 +64,9 @@ const initializer = (): Timer[] => {
     return defaultValue;
   }
   const parsed = JSON.parse(savedList) as Timer[];
-  return urlValue ? [{ id: uuid(), timerValue: urlValue, title: undefined }, ...parsed] : parsed;
+  return urlValue
+    ? [{ id: uuid(), timerValue: urlValue, title: undefined }, ...parsed]
+    : parsed;
 };
 
 export const useTimerList = () => {
@@ -73,7 +74,7 @@ export const useTimerList = () => {
   const [state, dispatch] = useReducer(
     reducer,
     [],
-    isAvailable ? initializer : () => defaultValue
+    isAvailable ? initializer : () => defaultValue,
   );
 
   useEffect(() => {
@@ -84,15 +85,15 @@ export const useTimerList = () => {
 
   const addNewTimer = useCallback(
     () => dispatch({ type: "addNewTimer", args: { id: uuid() } }),
-    []
+    [],
   );
   const removeTimer = useCallback(
     (id: string) => dispatch({ type: "removeTimer", args: { id } }),
-    []
+    [],
   );
   const updateTimer = useCallback(
     (timer: Timer) => dispatch({ type: "updateTimer", args: { ...timer } }),
-    []
+    [],
   );
   return { timerList: state, addNewTimer, removeTimer, updateTimer };
 };

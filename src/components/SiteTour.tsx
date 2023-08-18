@@ -9,7 +9,7 @@ export const SiteTour: FC = () => {
           content: (
             <>
               <h2>Thanks for using the timer app.</h2>
-              <h3>I'll show you how to use it.</h3>
+              <h3>I&apos;ll show you how to use it.</h3>
             </>
           ),
           placement: "center",
