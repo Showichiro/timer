@@ -2,6 +2,7 @@ import { useCallback, useEffect, useReducer } from "react";
 import uuid from "react-uuid";
 import { TimerValue } from "../types/TimerValue";
 import { isLocalStorageAvailable } from "../utils/localStorageUtil";
+import { getTimerFromUrl } from "../utils/urlUtil";
 
 type Timer = {
   id: string;
@@ -56,12 +57,15 @@ const key = "timerList";
 const defaultValue = [{ id: uuid(), timerValue: undefined, title: undefined }];
 
 const initializer = (): Timer[] => {
+  // URLからタイマーを取得する
+  const urlValue = getTimerFromUrl();
+
   const savedList = localStorage.getItem(key);
   if (!savedList) {
     return defaultValue;
   }
   const parsed = JSON.parse(savedList) as Timer[];
-  return parsed;
+  return urlValue ? [{ id: uuid(), timerValue: urlValue, title: undefined }, ...parsed] : parsed;
 };
 
 export const useTimerList = () => {
