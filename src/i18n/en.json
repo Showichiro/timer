@@ -1,0 +1,17 @@
+{
+  "title": "Timer",
+  "welcomeMessage.title": "Thanks for using the timer app.",
+  "welcomeMessage.detail": "I'll show you how to use it.",
+  "description.timerAction": "You can start, stop, and reset the timer by operating here.",
+  "description.timerTitle": "You can change the name of the timer.",
+  "description.timerCount": "You can change the time by touching the time on the timer.",
+  "description.timerDelete": "You can delete the timer by clicking here.",
+  "description.timerAdd": "You can add more timers by clicking here.",
+  "timer.defaultTitle": "timer",
+  "timer.action.start": "start",
+  "timer.action.resume": "resume",
+  "timer.action.pause": "pause",
+  "timer.action.reset": "reset",
+  "timer.action.cancel": "cancel",
+  "timer.action.confirm": "confirm"
+}

@@ -8,6 +8,7 @@ import useSound from "use-sound";
 import Title from "./Title";
 import { Edit } from "./Edit";
 import { Count } from "./Count";
+import { useTranslation } from "react-i18next";
 
 type TimerProps = {
   id: string;
@@ -37,7 +38,7 @@ export const Timer: FC<TimerProps> = ({
     minutes: 6,
     seconds: 0,
   },
-  defaultTitle = "タイマー",
+  defaultTitle,
   onClickDelete,
   onEditTimerValue,
   onEditTitle,
@@ -69,6 +70,8 @@ export const Timer: FC<TimerProps> = ({
   }, [timerValueRef.current]);
 
   const [isEditing, setIsEditing] = useState(false);
+
+  const { t } = useTranslation();
 
   return (
     <Card
@@ -134,31 +137,31 @@ export const Timer: FC<TimerProps> = ({
                 <Button
                   onClick={resume}
                   disabled={isRunning}
-                  size="lg"
+                  size="md"
                   color="primary"
                 >
-                  resume
+                  {t("timer.action.resume")}
                 </Button>
               ) : (
                 <Button
                   onClick={handleClickStart}
                   disabled={isRunning}
-                  size="lg"
+                  size="md"
                   color="primary"
                 >
-                  start
+                  {t("timer.action.start")}
                 </Button>
               )}
               <Button
                 onClick={pause}
                 disabled={!isRunning}
-                size="lg"
+                size="md"
                 color="secondary"
               >
-                pause
+                {t("timer.action.pause")}
               </Button>
-              <Button onClick={handleClickReset} size="lg" color="accent">
-                reset
+              <Button onClick={handleClickReset} size="md" color="accent">
+                {t("timer.action.reset")}
               </Button>
             </Card.Actions>
           </>

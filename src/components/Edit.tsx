@@ -2,6 +2,7 @@ import { FC } from "react";
 import { TimerValue } from "../types/TimerValue";
 import { useForm } from "react-hook-form";
 import { Button, Card, Select } from "react-daisyui";
+import { useTranslation } from "react-i18next";
 
 type Props = {
   defaultValues: TimerValue;
@@ -19,6 +20,7 @@ export const Edit: FC<Props> = ({
   const { handleSubmit: onSubmit, register } = useForm<TimerValue>({
     defaultValues,
   });
+  const { t } = useTranslation();
   return (
     <form onSubmit={onSubmit(onClickConfirm)}>
       <div className="grid grid-cols-3 gap-2 my-12">
@@ -56,10 +58,10 @@ export const Edit: FC<Props> = ({
       </div>
       <Card.Actions className="grid grid-cols-2 pt-0.5 gap-x-6 gap-y-6 xl:gap-x-2">
         <Button size="lg" color="warning" onClick={onClickCancel}>
-          cancel
+          {t("timer.action.cancel")}
         </Button>
         <Button type="submit" size="lg" color="primary">
-          confirm
+          {t("timer.action.confirm")}
         </Button>
       </Card.Actions>
     </form>

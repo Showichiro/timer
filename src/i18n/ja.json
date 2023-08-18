@@ -1,0 +1,17 @@
+{
+  "title": "タイマー",
+  "welcomeMessage.title": "タイマーアプリを使ってくれてありがとうございます。",
+  "welcomeMessage.detail": "使い方を見てみましょう。",
+  "description.timerAction": "このボタンを操作することで、タイマーのスタート・ストップ・リセットが可能です。",
+  "description.timerTitle": "タイマーの名前は変更することができます。",
+  "description.timerCount": "タイマーの時刻部分をタッチすることで時間を変更することができます。",
+  "description.timerDelete": "ここをタッチすることで、タイマーを削除できます。",
+  "description.timerAdd": "ここをタッチすることで、タイマーを追加することができます。",
+  "timer.defaultTitle": "タイマー",
+  "timer.action.start": "スタート",
+  "timer.action.resume": "再開",
+  "timer.action.pause": "停止",
+  "timer.action.reset": "リセット",
+  "timer.action.cancel": "キャンセル",
+  "timer.action.confirm": "確定"
+}
