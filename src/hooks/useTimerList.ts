@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useReducer } from "react";
-import uuid from "react-uuid";
 import { TimerValue } from "../types/TimerValue";
 import { isLocalStorageAvailable } from "../utils/localStorageUtil";
 import { getTimerFromUrl } from "../utils/urlUtil";
@@ -14,17 +13,17 @@ type State = Timer[];
 
 type Action =
   | {
-      type: "addNewTimer";
-      args: { id: string };
-    }
+    type: "addNewTimer";
+    args: { id: string };
+  }
   | {
-      type: "updateTimer";
-      args: Timer;
-    }
+    type: "updateTimer";
+    args: Timer;
+  }
   | {
-      type: "removeTimer";
-      args: { id: string };
-    };
+    type: "removeTimer";
+    args: { id: string };
+  };
 
 const reducer = (state: State, action: Action): Timer[] => {
   switch (action.type) {
@@ -53,7 +52,7 @@ const reducer = (state: State, action: Action): Timer[] => {
 
 const key = "timerList";
 
-const defaultValue = [{ id: uuid(), timerValue: undefined, title: undefined }];
+const defaultValue = [{ id: window.crypto.randomUUID(), timerValue: undefined, title: undefined }];
 
 const initializer = (): Timer[] => {
   // URLからタイマーを取得する
@@ -65,7 +64,7 @@ const initializer = (): Timer[] => {
   }
   const parsed = JSON.parse(savedList) as Timer[];
   return urlValue
-    ? [{ id: uuid(), timerValue: urlValue, title: undefined }, ...parsed]
+    ? [{ id: window.crypto.randomUUID(), timerValue: urlValue, title: undefined }, ...parsed]
     : parsed;
 };
 
@@ -84,7 +83,7 @@ export const useTimerList = () => {
   }, [state]);
 
   const addNewTimer = useCallback(
-    () => dispatch({ type: "addNewTimer", args: { id: uuid() } }),
+    () => dispatch({ type: "addNewTimer", args: { id: window.crypto.randomUUID() } }),
     [],
   );
   const removeTimer = useCallback(
