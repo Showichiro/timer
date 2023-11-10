@@ -9,6 +9,7 @@ const AddButton: FC<AddButtonProps> = ({ onClick }) => (
   <Button
     onClick={onClick}
     shape="circle"
+    color="accent"
     className="timer-add inline-block p-3 font-medium leading-tight bottom-5 right-5"
     style={{ position: "fixed" }}
     aria-label="add timer"

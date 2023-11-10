@@ -22,6 +22,7 @@
     "react-i18next": "^13.3.1",
     "react-joyride": "^2.6.2",
     "react-timer-hook": "^3.0.7",
+    "theme-change": "^2.5.0",
     "use-sound": "^4.0.1"
   },
   "devDependencies": {

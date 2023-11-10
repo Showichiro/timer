@@ -9,7 +9,7 @@ export const CardWapper: FC<{
   <Card
     className={clsx("border-2", {
       "border-red-700": isExpired,
-      "border-black dark:border-slate-400": !isExpired,
+      "border-primary-content": !isExpired,
     })}
   >
     {children}

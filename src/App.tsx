@@ -6,10 +6,15 @@ import { useIsFirst } from "./hooks/useIsFirst";
 
 import "./i18n/configs";
 import { Header } from "./components/Header";
+import { themeChange } from "theme-change";
+import { useEffect } from "react";
 
 function App() {
   const { timerList, removeTimer, addNewTimer, updateTimer } = useTimerList();
   const isFirst = useIsFirst();
+  useEffect(() => {
+    themeChange(false);
+  }, []);
   return (
     <>
       <Header />
