@@ -21,7 +21,6 @@ const Title: FC<TitleProps> = ({ defaultTitle, onEditTitle }) => {
       size={6}
       defaultValue={defaultTitle ?? defaultTitleText}
       onBlur={handleBlur}
-      onFocus={(e) => e.target.select()}
       aria-label="timer name"
     />
   );
