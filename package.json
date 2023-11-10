@@ -9,8 +9,6 @@
     "build": "tsc && vite build",
     "build:tauri": "tsc && vite build --config ./vite.config.tauri.ts",
     "preview": "vite preview",
-    "deploy": "rm -fr dist && ./deploy.sh",
-    "tauri": "tauri",
     "lint": "eslint --fix src/**/*.{js,ts,jsx,tsx}",
     "format": "prettier src/**/*.{js,ts,jsx,tsx} --write"
   },
@@ -27,7 +25,6 @@
     "use-sound": "^4.0.1"
   },
   "devDependencies": {
-    "@tauri-apps/cli": "^1.5.6",
     "@types/react": "^18.2.36",
     "@types/react-dom": "^18.2.14",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
