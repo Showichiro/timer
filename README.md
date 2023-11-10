@@ -1,5 +1,8 @@
 # timer
 
+## status
+[![deploy](https://github.com/Showichiro/timer/actions/workflows/deploy-pages.yaml/badge.svg)](https://github.com/Showichiro/timer/actions/workflows/deploy-pages.yaml)
+
 ## about this repository
 
 Countdown timer application. You can set as many timers as you want. The timers are stored in local storage, so they are not lost even if you close the browser.
