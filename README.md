@@ -5,6 +5,6 @@
 
 Countdown / Stopwatch timer application. You can set as many timers as you want. The timers are stored in local storage, so they are not lost even if you close the browser.
 
-## produciton
+## production
 
 https://showichiro.github.io/timer/
