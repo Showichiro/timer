@@ -7,6 +7,8 @@ type TitleProps = {
   onEditTitle: (title: string) => void;
 };
 
+
+
 const Title: FC<TitleProps> = ({ defaultTitle, onEditTitle }) => {
   const handleBlur = useCallback(
     ({ target: { value } }: { target: { value: string } }) =>

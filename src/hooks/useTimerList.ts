@@ -3,8 +3,11 @@ import { TimerValue } from "../types/TimerValue";
 import { isLocalStorageAvailable } from "../utils/localStorageUtil";
 import { getTimerFromUrl } from "../utils/urlUtil";
 
+export type TimerType = "countdown" | "stopwatch";
+
 type Timer = {
   id: string;
+  type: TimerType;
   timerValue: TimerValue | undefined;
   title: string | undefined;
 };
@@ -14,7 +17,7 @@ type State = Timer[];
 type Action =
   | {
       type: "addNewTimer";
-      args: { id: string };
+      args: { id: string; type: TimerType };
     }
   | {
       type: "updateTimer";
@@ -29,9 +32,9 @@ const reducer = (state: State, action: Action): Timer[] => {
   switch (action.type) {
     case "addNewTimer": {
       const {
-        args: { id },
+        args: { id, type },
       } = action;
-      return [...state, { id, timerValue: undefined, title: undefined }];
+      return [...state, { id, timerValue: undefined, title: undefined, type }];
     }
     case "updateTimer": {
       const { args: timer } = action;
@@ -52,8 +55,13 @@ const reducer = (state: State, action: Action): Timer[] => {
 
 const key = "timerList";
 
-const defaultValue = [
-  { id: window.crypto.randomUUID(), timerValue: undefined, title: undefined },
+const defaultValue: Timer[] = [
+  {
+    id: window.crypto.randomUUID(),
+    timerValue: undefined,
+    title: undefined,
+    type: "countdown",
+  },
 ];
 
 const initializer = (): Timer[] => {
@@ -71,6 +79,7 @@ const initializer = (): Timer[] => {
           id: window.crypto.randomUUID(),
           timerValue: urlValue,
           title: undefined,
+          type: "countdown",
         },
         ...parsed,
       ]
@@ -92,10 +101,10 @@ export const useTimerList = () => {
   }, [state]);
 
   const addNewTimer = useCallback(
-    () =>
+    (type: TimerType) =>
       dispatch({
         type: "addNewTimer",
-        args: { id: window.crypto.randomUUID() },
+        args: { id: window.crypto.randomUUID(), type },
       }),
     [],
   );

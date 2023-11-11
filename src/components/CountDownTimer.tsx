@@ -2,7 +2,7 @@ import { FC } from "react";
 import { TimerValue } from "../types/TimerValue";
 import { CardWapper } from "./CardWrapper";
 import { CardTitle } from "./CardTitle";
-import { CardBody } from "./CardBody";
+import { CountDownCardBody } from "./CountDownCardBody";
 import { useTimerValue } from "../hooks/useTimerValue";
 
 type TimerProps = {
@@ -14,7 +14,7 @@ type TimerProps = {
   onEditTitle: (title: string) => void;
 };
 
-export const Timer: FC<TimerProps> = ({
+export const CountDownTimer: FC<TimerProps> = ({
   id,
   defaultTimerValue = {
     hours: 0,
@@ -51,7 +51,7 @@ export const Timer: FC<TimerProps> = ({
         onEdit:title={onEditTitle}
         onClick:deleteButton={onClickDelete}
       />
-      <CardBody
+      <CountDownCardBody
         currentValues={currentValue}
         defaultValues={defaultTimerValue}
         id={id}

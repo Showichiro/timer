@@ -7,11 +7,16 @@
   "description.timerCount": "You can change the time by touching the time on the timer.",
   "description.timerDelete": "You can delete the timer by clicking here.",
   "description.timerAdd": "You can add more timers by clicking here.",
+  "description.timerTheme": "You can change theme color by clicking here.",
   "timer.defaultTitle": "timer",
   "timer.action.start": "start",
   "timer.action.resume": "resume",
   "timer.action.pause": "pause",
   "timer.action.reset": "reset",
   "timer.action.cancel": "cancel",
-  "timer.action.confirm": "confirm"
+  "timer.action.confirm": "confirm",
+  "header.menu.theme": "Theme",
+  "header.menu.timer.title": "Add Timer",
+  "header.menu.timer.countdown": "Countdown",
+  "header.menu.timer.stopwatch": "Stopwatch"
 }

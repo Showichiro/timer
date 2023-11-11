@@ -7,11 +7,16 @@
   "description.timerCount": "タイマーの時刻部分をタッチすることで時間を変更することができます。",
   "description.timerDelete": "ここをタッチすることで、タイマーを削除できます。",
   "description.timerAdd": "ここをタッチすることで、タイマーを追加することができます。",
+  "description.timerTheme":"ここをタッチすることでテーマカラーを変更することができます。",
   "timer.defaultTitle": "タイマー",
   "timer.action.start": "スタート",
   "timer.action.resume": "再開",
   "timer.action.pause": "停止",
   "timer.action.reset": "リセット",
   "timer.action.cancel": "キャンセル",
-  "timer.action.confirm": "確定"
+  "timer.action.confirm": "確定",
+  "header.menu.theme": "テーマカラー",
+  "header.menu.timer.title": "タイマーを追加",
+  "header.menu.timer.countdown": "カウントダウン",
+  "header.menu.timer.stopwatch": "ストップウォッチ"
 }

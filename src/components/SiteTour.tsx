@@ -37,6 +37,10 @@ export const SiteTour: FC = () => {
           content: <h2>{t("description.timerAdd")}</h2>,
           target: ".timer-add",
         },
+        {
+          content: <h2>{t("description.timerTheme")}</h2>,
+          target: ".timer-theme",
+        },
       ]}
       continuous
       scrollToFirstStep

@@ -5,7 +5,7 @@ import { Count } from "./Count";
 import { useTranslation } from "react-i18next";
 import { TimerValue } from "../types/TimerValue";
 
-export const CardBody: FC<{
+export const CountDownCardBody: FC<{
   isEditing: boolean;
   id: string;
   defaultValues: TimerValue;

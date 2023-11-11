@@ -1,10 +1,9 @@
 import { useTimer } from "react-timer-hook";
-import useSound from "use-sound";
-import timeUpSound from "../assets/timeUpSound.mp3";
-import clickSound from "../assets/clickSound.mp3";
 import { convertTimerValueToTimeStamp } from "../utils/convertTimerValueToTimeStamp";
 import { TimerValue } from "../types/TimerValue";
 import { useCallback, useState } from "react";
+import { useTimeUpSound } from "./useTimeUpSound";
+import { useClickSound } from "./useClickSound";
 
 type Args = {
   defaultTimerValue?: TimerValue;
@@ -19,8 +18,8 @@ export const useTimerValue = ({
   },
   handleEditTimerValue,
 }: Args) => {
-  const [playTimeUpSound] = useSound(timeUpSound);
-  const [playClickSound] = useSound(clickSound);
+  const { playTimeUpSound } = useTimeUpSound();
+  const { playClickSound } = useClickSound();
   const { hours, minutes, seconds, isRunning, pause, start, restart, resume } =
     useTimer({
       expiryTimestamp: convertTimerValueToTimeStamp(defaultTimerValue),
