@@ -1,0 +1,35 @@
+name: check
+
+on:
+  push:
+    branches: ["master"]
+  pull_request:
+    branches: ["master"]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup repo
+        uses: actions/checkout@v3
+      - name: Setup Pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: pnpm
+      - name: install
+        run: pnpm install
+      - name: lint
+        run: pnpm lint
+      - name: format
+        run: pnpm format --check
+      - name: type-check
+        run: pnpm type-check
