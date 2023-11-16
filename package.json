@@ -7,10 +7,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "build:tauri": "tsc && vite build --config ./vite.config.tauri.ts",
     "preview": "vite preview",
-    "lint": "eslint --fix src/**/*.{js,ts,jsx,tsx}",
-    "format": "prettier src/**/*.{js,ts,jsx,tsx} --write"
+    "lint": "eslint src/**/*.{js,ts,jsx,tsx}",
+    "lint:fix": "eslint --fix src/**/*.{js,ts,jsx,tsx}",
+    "format": "prettier src/**/*.{js,ts,jsx,tsx} --write",
+    "type-check": "tsc"
   },
   "dependencies": {
     "clsx": "^2.0.0",
