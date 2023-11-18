@@ -2,6 +2,12 @@ import { useStopwatch } from "react-timer-hook";
 import { useClickSound } from "./useClickSound";
 import { useCallback } from "react";
 
+/**
+ * The function `useStopWatchValue` returns an object with various properties and functions related to
+ * a stopwatch, including the current hours, minutes, and seconds, whether the stopwatch is running or
+ * not, and functions to start, pause, resume, and reset the stopwatch.
+ * @returns The function `useStopWatchValue` returns an object with the following properties:
+ */
 export const useStopWatchValue = () => {
   const { playClickSound } = useClickSound();
   const {
