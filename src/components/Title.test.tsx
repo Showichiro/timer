@@ -18,6 +18,7 @@ describe("Title", () => {
     const mock = vi.fn();
     render(<Title defaultTitle="timer" onEditTitle={mock} />);
     screen.getByRole("textbox").focus();
+    expect(mock).not.toHaveBeenCalled();
     fireEvent.change(screen.getByRole("textbox"), {
       target: { value: "new title" },
     });
