@@ -3,8 +3,7 @@ import { TimerValue } from "../types/TimerValue";
 /**
  * The function converts a timer value (hours, minutes, seconds) into a timestamp by adding the
  * corresponding time duration to the current timestamp.
- * @param {TimerValue}  - The `TimerValue` parameter is an object that contains the following
- * properties:
+ * @param {TimerValue} timerValue - An object that contains `hours`, `minutes`, and `seconds` properties.
  * @returns a new Date object that represents the current time plus the specified hours, minutes, and
  * seconds.
  */
