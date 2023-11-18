@@ -1,5 +1,10 @@
 import { TimerValue } from "../types/TimerValue";
 
+/**
+ * The function `getTimerFromUrl` parses the URL and returns a TimerValue object if the URL contains a
+ * valid timer value, otherwise it returns null.
+ * @returns The function `getTimerFromUrl` returns a value of type `TimerValue` or `null`.
+ */
 export const getTimerFromUrl = (): TimerValue | null => {
   const url = window.location.href.split("/").slice(-1)[0];
   if (url) {
