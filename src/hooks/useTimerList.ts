@@ -5,7 +5,7 @@ import { getTimerFromUrl } from "../utils/urlUtil";
 
 export type TimerType = "countdown" | "stopwatch";
 
-type Timer = {
+export type Timer = {
   id: string;
   type: TimerType;
   timerValue: TimerValue | undefined;
@@ -28,7 +28,7 @@ type Action =
       args: { id: string };
     };
 
-const reducer = (state: State, action: Action): Timer[] => {
+export const reducer = (state: State, action: Action): Timer[] => {
   switch (action.type) {
     case "addNewTimer": {
       const {
@@ -64,7 +64,7 @@ const defaultValue: Timer[] = [
   },
 ];
 
-const initializer = (): Timer[] => {
+export const initializer = (): Timer[] => {
   // URLからタイマーを取得する
   const urlValue = getTimerFromUrl();
 
