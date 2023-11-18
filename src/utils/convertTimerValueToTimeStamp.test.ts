@@ -9,7 +9,7 @@ describe("convertTimerValueToTimeStamp", () => {
     vi.useRealTimers();
   });
 
-  it("convert timer value to timestamp", () => {
+  it("should return correct timestamp for given timer values", () => {
     const hours = 1;
     const minutes = 2;
     const seconds = 3;
