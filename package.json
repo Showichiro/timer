@@ -11,7 +11,9 @@
     "lint": "eslint src/**/*.{js,ts,jsx,tsx}",
     "lint:fix": "eslint --fix src/**/*.{js,ts,jsx,tsx}",
     "format": "prettier src/**/*.{js,ts,jsx,tsx} --write",
-    "type-check": "tsc"
+    "type-check": "tsc",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "clsx": "^2.0.0",
@@ -27,6 +29,9 @@
     "use-sound": "^4.0.1"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.0",
+    "@testing-library/user-event": "^14.5.1",
     "@types/react": "^18.2.36",
     "@types/react-dom": "^18.2.14",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
@@ -36,12 +41,14 @@
     "daisyui": "^3.9.4",
     "eslint": "^8.53.0",
     "eslint-plugin-react": "^7.33.2",
+    "jsdom": "^22.1.0",
     "postcss": "^8.4.31",
     "prettier": "3.0.3",
     "rollup-plugin-visualizer": "^5.9.2",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2",
     "vite": "^4.5.0",
-    "vite-plugin-pwa": "^0.16.7"
+    "vite-plugin-pwa": "^0.16.7",
+    "vitest": "^0.34.6"
   }
 }
