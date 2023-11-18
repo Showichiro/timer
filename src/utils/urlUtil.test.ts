@@ -1,6 +1,10 @@
 import { getTimerFromUrl } from "./urlUtil";
 
 describe("getTimerFromUrl", () => {
+  afterEach(() => {
+    vi.restoreAllMocks();
+  });
+
   const url = "https://example.com";
 
   it("should return the timer value from the url (1)", () => {
