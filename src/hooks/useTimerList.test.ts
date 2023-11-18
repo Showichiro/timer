@@ -94,7 +94,7 @@ describe("userTimerList", () => {
   });
 
   describe("initializer", () => {
-    it("shoud return initial value when localstorage does not have savedList", () => {
+    it("should return initial value when localstorage does not have savedList", () => {
       vi.spyOn(Storage.prototype, "getItem").mockReturnValue(null);
       expect(initializer()).toEqual([
         {
