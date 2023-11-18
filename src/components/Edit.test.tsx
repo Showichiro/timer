@@ -11,7 +11,7 @@ describe("Edit", () => {
         onClick:confirm={vi.fn()}
       />,
     );
-    expect(screen.getAllByRole("combobox")).length(3);
+    expect(screen.getAllByRole("combobox")).toHaveLength(3);
   });
 
   it("should call onClick:cancel when user click cancel button", async () => {
