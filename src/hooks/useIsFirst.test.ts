@@ -29,7 +29,7 @@ describe("useIsFirst", () => {
     expect(setItemSpy).toHaveBeenCalledWith("isFirst", "false");
   });
 
-  it("should return false when localStorage is available and localStorage value (isFirst) is 'true'", () => {
+  it("should return false when localStorage is available and localStorage value (isFirst) is 'false'", () => {
     isLocalStorageAvailable.mockReturnValue(true);
     vi.spyOn(Storage.prototype, "getItem").mockReturnValue("false");
     const setItemSpy = vi.spyOn(Storage.prototype, "setItem");
