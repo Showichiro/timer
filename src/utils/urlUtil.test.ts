@@ -13,7 +13,7 @@ describe("getTimerFromUrl", () => {
       value: {
         href: `${url}/1`,
       },
-      writable: true, // possibility to override
+      writable: true,
     });
     const timer = getTimerFromUrl();
     expect(timer).toStrictEqual({ hours: 0, minutes: 1, seconds: 0 });
@@ -24,7 +24,7 @@ describe("getTimerFromUrl", () => {
       value: {
         href: `${url}/01`,
       },
-      writable: true, // possibility to override
+      writable: true,
     });
     const timer = getTimerFromUrl();
     expect(timer).toStrictEqual({ hours: 0, minutes: 1, seconds: 0 });
@@ -35,7 +35,7 @@ describe("getTimerFromUrl", () => {
       value: {
         href: `${url}/1:12`,
       },
-      writable: true, // possibility to override
+      writable: true,
     });
     const timer = getTimerFromUrl();
     expect(timer).toStrictEqual({ hours: 0, minutes: 1, seconds: 12 });
@@ -46,29 +46,29 @@ describe("getTimerFromUrl", () => {
       value: {
         href: `${url}/01:12`,
       },
-      writable: true, // possibility to override
+      writable: true,
     });
     const timer = getTimerFromUrl();
     expect(timer).toStrictEqual({ hours: 0, minutes: 1, seconds: 12 });
   });
 
-  it("should return the timer value from the url (01:12)", () => {
+  it("should return the timer value from the url (02:01:12)", () => {
     Object.defineProperty(window, "location", {
       value: {
         href: `${url}/02:01:12`,
       },
-      writable: true, // possibility to override
+      writable: true,
     });
     const timer = getTimerFromUrl();
     expect(timer).toStrictEqual({ hours: 2, minutes: 1, seconds: 12 });
   });
 
-  it("should return the timer value from the url (01:12)", () => {
+  it("should return the timer value from the url (02:1:12)", () => {
     Object.defineProperty(window, "location", {
       value: {
         href: `${url}/02:1:12`,
       },
-      writable: true, // possibility to override
+      writable: true,
     });
     const timer = getTimerFromUrl();
     expect(timer).toStrictEqual({ hours: 2, minutes: 1, seconds: 12 });
@@ -79,7 +79,7 @@ describe("getTimerFromUrl", () => {
       value: {
         href: `${url}`,
       },
-      writable: true, // possibility to override
+      writable: true,
     });
     const timer = getTimerFromUrl();
     expect(timer).toStrictEqual(null);
@@ -90,7 +90,7 @@ describe("getTimerFromUrl", () => {
       value: {
         href: `${url}/abc`,
       },
-      writable: true, // possibility to override
+      writable: true,
     });
     const timer = getTimerFromUrl();
     expect(timer).toStrictEqual(null);

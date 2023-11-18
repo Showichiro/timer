@@ -1,14 +1,17 @@
 import { isLocalStorageAvailable } from "./localStorageUtil";
 
 describe("isLocalStorageAvailable", () => {
-  const spy = vi.spyOn(Storage.prototype, "setItem");
+  afterEach(() => {
+    vi.resetAllMocks();
+  });
 
   it("should return true when localstorage is available", () => {
+    vi.spyOn(Storage.prototype, "setItem");
     expect(isLocalStorageAvailable()).toBe(true);
   });
 
   it("should return false when localstorage is not available", () => {
-    spy.mockImplementation(() => {
+    vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
       throw new Error("Error");
     });
     expect(isLocalStorageAvailable()).toBe(false);
