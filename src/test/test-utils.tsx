@@ -5,6 +5,21 @@ afterEach(() => {
   cleanup();
 });
 
+// TODO: If global context providers are needed, include them in the wrapper function.
+// Example wrapper with context provider
+// const AllTheProviders = ({ children }) => {
+//   return (
+//     <MyContextProvider>
+//       {children}
+//     </MyContextProvider>
+//   );
+// };
+
+// Then use it in the customRender function
+// function customRender(ui, { ...options }) {
+//   return render(ui, { wrapper: AllTheProviders, ...options });
+// }
+
 function customRender(ui: React.ReactElement, options = {}) {
   return render(ui, {
     // wrap provider(s) here if needed
