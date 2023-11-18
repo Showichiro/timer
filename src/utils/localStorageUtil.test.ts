@@ -6,7 +6,7 @@ describe("isLocalStorageAvailable", () => {
   });
 
   it("should return true when localstorage is available", () => {
-    vi.spyOn(Storage.prototype, "setItem");
+    vi.spyOn(Storage.prototype, "setItem").mockImplementation(() => {});
     expect(isLocalStorageAvailable()).toBe(true);
   });
 
