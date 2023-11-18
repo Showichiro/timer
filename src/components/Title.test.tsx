@@ -14,7 +14,7 @@ describe("Title", () => {
     expect(screen.getByRole("textbox")).toHaveValue("timer.defaultTitle");
   });
 
-  it("should call onEditTitle when input is blured", () => {
+  it("should call onEditTitle when input is blurred", () => {
     const mock = vi.fn();
     render(<Title defaultTitle="timer" onEditTitle={mock} />);
     screen.getByRole("textbox").focus();
