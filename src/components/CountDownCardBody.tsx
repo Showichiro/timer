@@ -17,7 +17,7 @@ export const CountDownCardBody: FC<{
   "disabled:start": boolean;
   "disabled:pause": boolean;
   "disabled:reset": boolean;
-  "onClick:editcCancel": () => void;
+  "onClick:editCancel": () => void;
   "onClick:editConfirm": (value: TimerValue) => void;
   "onClick:count": () => void;
   "onClick:start": () => void;
@@ -36,7 +36,7 @@ export const CountDownCardBody: FC<{
   "disabled:start": disabledStart,
   "disabled:pause": disabledPause,
   "disabled:reset": disabledReset,
-  "onClick:editcCancel": onClickEditCancel,
+  "onClick:editCancel": onClickEditCancel,
   "onClick:editConfirm": onClickEditConfirm,
   "onClick:count": onClickCount,
   "onClick:start": onClickStart,
