@@ -15,7 +15,8 @@
     "test": "vitest",
     "coverage": "vitest run --coverage",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "dependencies": {
     "clsx": "^2.0.0",
@@ -48,6 +49,7 @@
     "@typescript-eslint/parser": "^6.9.1",
     "@vitejs/plugin-react": "^4.1.1",
     "autoprefixer": "^10.4.16",
+    "chromatic": "^9.1.0",
     "daisyui": "^3.9.4",
     "eslint": "^8.53.0",
     "eslint-plugin-react": "^7.33.2",
@@ -62,5 +64,7 @@
     "vite": "^4.5.0",
     "vite-plugin-pwa": "^0.16.7",
     "vitest": "^0.34.6"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "timer@0.0.0"
 }

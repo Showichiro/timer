@@ -87,6 +87,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.16
     version: 10.4.16(postcss@8.4.31)
+  chromatic:
+    specifier: ^9.1.0
+    version: 9.1.0
   daisyui:
     specifier: ^3.9.4
     version: 3.9.4
@@ -4835,6 +4838,11 @@ packages:
   /chownr@2.0.0:
     resolution: {integrity: sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==}
     engines: {node: '>=10'}
+    dev: true
+
+  /chromatic@9.1.0:
+    resolution: {integrity: sha512-9ib8k4LIfg/88kKufxz1N8vgCB7nlLhJqmx+Vx55cM/6DCB/M6oqroirVRXfdeC7qaZuhyUemPF2QHxBh7GXtQ==}
+    hasBin: true
     dev: true
 
   /ci-info@3.9.0:
