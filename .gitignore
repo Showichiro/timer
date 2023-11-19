@@ -13,6 +13,7 @@ dist-ssr
 *.local
 stats.html
 dev-dist
+storybook-static
 
 # Editor directories and files
 .vscode/*
