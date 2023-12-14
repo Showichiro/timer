@@ -47,7 +47,7 @@ export const Header: FC<{ addTimer: (type: TimerType) => void }> = ({
         </div>
         <div className="flex-none">
           <Menu horizontal className="px-3">
-            <li>
+            <Menu.Item>
               <details className="timer-add">
                 <summary>{t("header.menu.timer.title")}</summary>
                 <ul className="p-2 bg-base-100">
@@ -63,8 +63,8 @@ export const Header: FC<{ addTimer: (type: TimerType) => void }> = ({
                   </li>
                 </ul>
               </details>
-            </li>
-            <li>
+            </Menu.Item>
+            <Menu.Item>
               <details className="timer-theme">
                 <summary>{t("header.menu.theme")}</summary>
                 <ul className="p-2 bg-base-100">
@@ -77,7 +77,7 @@ export const Header: FC<{ addTimer: (type: TimerType) => void }> = ({
                   ))}
                 </ul>
               </details>
-            </li>
+            </Menu.Item>
           </Menu>
         </div>
       </div>
