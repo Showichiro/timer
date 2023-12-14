@@ -41,13 +41,13 @@ export default defineConfig({
   ],
   base: "/timer/",
   build: {
+    sourcemap: true,
     rollupOptions: {
       plugins: [visualizer()],
       output: {
         manualChunks: {
           vendor: ["react", "react-dom"],
         },
-        sourcemap: true,
       },
     },
   },
