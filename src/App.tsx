@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { StopWatch } from "./components/StopWatch";
 import "./i18n/configs";
 import { MainLayout } from "./components/MainLayout";
+import { useClickSound } from "./hooks/useClickSound";
+import { useTimeUpSound } from "./hooks/useTimeUpSound";
 
 function App() {
   const { timerList, removeTimer, addNewTimer, updateTimer } = useTimerList();
@@ -15,8 +17,18 @@ function App() {
   useEffect(() => {
     themeChange(false);
   }, []);
+  const {
+    audio: clickSoundAudio,
+    control: { play: playClickSound },
+  } = useClickSound();
+  const {
+    audio: timeupSoundAudio,
+    control: { play: playTimeUpSound },
+  } = useTimeUpSound();
   return (
     <>
+      {clickSoundAudio}
+      {timeupSoundAudio}
       <Header addTimer={addNewTimer} />
       {isFirst && timerList.length !== 0 && <SiteTour />}
       <MainLayout>
@@ -26,6 +38,7 @@ function App() {
               key={`${timer.id}-${timer.title}`}
               onClickDelete={() => removeTimer(timer.id)}
               onEditTitle={(title) => updateTimer({ ...timer, title })}
+              playClickSound={playClickSound}
             />
           ) : (
             <CountDownTimer
@@ -38,6 +51,8 @@ function App() {
                 updateTimer({ ...timer, timerValue })
               }
               onEditTitle={(title) => updateTimer({ ...timer, title })}
+              playClickSound={playClickSound}
+              playTimeUpSound={playTimeUpSound}
             />
           ),
         )}

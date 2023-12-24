@@ -12,6 +12,8 @@ type TimerProps = {
   onClickDelete: () => void;
   onEditTimerValue: (timerValue: TimerValue) => void;
   onEditTitle: (title: string) => void;
+  playClickSound: () => void;
+  playTimeUpSound: () => void;
 };
 
 export const CountDownTimer: FC<TimerProps> = ({
@@ -25,6 +27,8 @@ export const CountDownTimer: FC<TimerProps> = ({
   onClickDelete,
   onEditTimerValue,
   onEditTitle,
+  playClickSound,
+  playTimeUpSound,
 }) => {
   const {
     isEditing,
@@ -43,6 +47,8 @@ export const CountDownTimer: FC<TimerProps> = ({
   } = useTimerValue({
     defaultTimerValue,
     handleEditTimerValue: onEditTimerValue,
+    playClickSound,
+    playTimeUpSound,
   });
   return (
     <CardWapper isExpired={isExpired}>

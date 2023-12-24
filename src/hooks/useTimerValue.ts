@@ -2,8 +2,6 @@ import { useTimer } from "react-timer-hook";
 import { convertTimerValueToTimeStamp } from "../utils/convertTimerValueToTimeStamp";
 import { TimerValue } from "../types/TimerValue";
 import { useCallback, useState } from "react";
-import { useTimeUpSound } from "./useTimeUpSound";
-import { useClickSound } from "./useClickSound";
 
 /**
  * The `Args` type is a TypeScript type that represents an object with optional `defaultTimerValue`
@@ -17,6 +15,8 @@ import { useClickSound } from "./useClickSound";
 type Args = {
   defaultTimerValue?: TimerValue;
   handleEditTimerValue: (value: TimerValue) => void;
+  playClickSound: () => void;
+  playTimeUpSound: () => void;
 };
 
 /**
@@ -33,9 +33,9 @@ export const useTimerValue = ({
     seconds: 0,
   },
   handleEditTimerValue,
+  playClickSound,
+  playTimeUpSound,
 }: Args) => {
-  const { playTimeUpSound } = useTimeUpSound();
-  const { playClickSound } = useClickSound();
   const { hours, minutes, seconds, isRunning, pause, start, restart, resume } =
     useTimer({
       expiryTimestamp: convertTimerValueToTimeStamp(defaultTimerValue),
