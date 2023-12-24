@@ -28,7 +28,7 @@ export const StopWatch: FC<StopWatchProps> = ({
     isStarted,
     minutes,
     seconds,
-  } = useStopWatchValue(playClickSound);
+  } = useStopWatchValue({ playClickSound });
   return (
     <CardWapper isExpired={false}>
       <CardTitle
