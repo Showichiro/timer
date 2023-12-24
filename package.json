@@ -28,8 +28,8 @@
     "react-i18next": "^13.5.0",
     "react-joyride": "^2.7.1",
     "react-timer-hook": "^3.0.7",
-    "theme-change": "^2.5.0",
-    "use-sound": "^4.0.1"
+    "react-use": "^17.4.2",
+    "theme-change": "^2.5.0"
   },
   "devDependencies": {
     "@storybook/addon-essentials": "^7.6.4",

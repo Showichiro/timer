@@ -1,6 +1,9 @@
 import { useStopwatch } from "react-timer-hook";
-import { useClickSound } from "./useClickSound";
 import { useCallback } from "react";
+
+type Args = {
+  playClickSound: () => void;
+};
 
 /**
  * The function `useStopWatchValue` returns an object with various properties and functions related to
@@ -8,8 +11,7 @@ import { useCallback } from "react";
  * not, and functions to start, pause, resume, and reset the stopwatch.
  * @returns The function `useStopWatchValue` returns an object with the following properties:
  */
-export const useStopWatchValue = () => {
-  const { playClickSound } = useClickSound();
+export const useStopWatchValue = ({ playClickSound }: Args) => {
   const {
     hours,
     minutes,

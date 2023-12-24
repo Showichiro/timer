@@ -8,12 +8,14 @@ type StopWatchProps = {
   defaultTitle?: string;
   onClickDelete: () => void;
   onEditTitle: (title: string) => void;
+  playClickSound: () => void;
 };
 
 export const StopWatch: FC<StopWatchProps> = ({
   defaultTitle,
   onClickDelete,
   onEditTitle,
+  playClickSound,
 }) => {
   const {
     isResume,
@@ -26,7 +28,7 @@ export const StopWatch: FC<StopWatchProps> = ({
     isStarted,
     minutes,
     seconds,
-  } = useStopWatchValue();
+  } = useStopWatchValue({ playClickSound });
   return (
     <CardWapper isExpired={false}>
       <CardTitle
