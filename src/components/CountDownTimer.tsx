@@ -1,66 +1,53 @@
 import { FC } from "react";
-import { TimerValue } from "../types/TimerValue";
 import { CardWapper } from "./CardWrapper";
 import { CardTitle } from "./CardTitle";
 import { CountDownCardBody } from "./CountDownCardBody";
-import { useTimerValue } from "../hooks/useTimerValue";
+import useTimerValue from "../hooks/useTimerValue";
+import { PrimitiveAtom } from "jotai";
+import { Timer } from "../hooks/useTimerList";
 
 type TimerProps = {
-  id: string;
-  defaultTimerValue?: TimerValue;
-  defaultTitle?: string;
+  timerAtom: PrimitiveAtom<Timer>;
   onClickDelete: () => void;
-  onEditTimerValue: (timerValue: TimerValue) => void;
-  onEditTitle: (title: string) => void;
   playClickSound: () => void;
   playTimeUpSound: () => void;
 };
 
 export const CountDownTimer: FC<TimerProps> = ({
-  id,
-  defaultTimerValue = {
-    hours: 0,
-    minutes: 6,
-    seconds: 0,
-  },
-  defaultTitle,
+  timerAtom,
   onClickDelete,
-  onEditTimerValue,
-  onEditTitle,
   playClickSound,
   playTimeUpSound,
 }) => {
   const {
-    isEditing,
-    isRunning,
-    currentValue,
-    handleClickCount,
-    handleClickEditCancel,
-    handleClickEditConfirm,
-    handleClickPause,
-    handleClickReset,
-    handleClickResume,
-    handleClickStart,
-    isExpired,
-    isResume,
-    isStarted,
+    title,
+    timerValue: {
+      defaultTimerValue,
+      currentValue,
+      handleClickCount,
+      handleClickEditCancel,
+      handleClickEditConfirm,
+      handleClickPause,
+      handleClickReset,
+      handleClickResume,
+      handleClickStart,
+      isEditing,
+      isExpired,
+      isResume,
+      isRunning,
+      isStarted,
+    },
   } = useTimerValue({
-    defaultTimerValue,
-    handleEditTimerValue: onEditTimerValue,
     playClickSound,
     playTimeUpSound,
+    timerAtom,
   });
   return (
     <CardWapper isExpired={isExpired}>
-      <CardTitle
-        defaultTitle={defaultTitle}
-        onEdit:title={onEditTitle}
-        onClick:deleteButton={onClickDelete}
-      />
+      <CardTitle titleAtom={title} onClick:deleteButton={onClickDelete} />
       <CountDownCardBody
         currentValues={currentValue}
         defaultValues={defaultTimerValue}
-        id={id}
         disabled:pause={!isRunning}
         disabled:reset={!isStarted}
         disabled:resume={isRunning}

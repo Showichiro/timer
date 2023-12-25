@@ -7,7 +7,6 @@ import { TimerValue } from "../types/TimerValue";
 
 export const CountDownCardBody: FC<{
   isEditing: boolean;
-  id: string;
   defaultValues: TimerValue;
   currentValues: TimerValue;
   isExpired: boolean;
@@ -26,7 +25,6 @@ export const CountDownCardBody: FC<{
   "onClick:reset": () => void;
 }> = ({
   isEditing,
-  id,
   defaultValues,
   currentValues: { hours, minutes, seconds },
   isExpired,
@@ -49,7 +47,6 @@ export const CountDownCardBody: FC<{
     <Card.Body>
       {isEditing && (
         <Edit
-          id={id}
           defaultValues={defaultValues}
           onClick:cancel={onClickEditCancel}
           onClick:confirm={onClickEditConfirm}

@@ -1,44 +1,48 @@
+import { PrimitiveAtom, useAtomValue } from "jotai";
+import { focusAtom } from "jotai-optics";
+import { Timer } from "./useTimerList";
+import { useCallback, useRef, useState } from "react";
+import { useAtomCallback } from "jotai/utils";
 import { useTimer } from "react-timer-hook";
 import { convertTimerValueToTimeStamp } from "../utils/convertTimerValueToTimeStamp";
 import { TimerValue } from "../types/TimerValue";
-import { useCallback, useState } from "react";
 
-/**
- * The `Args` type is a TypeScript type that represents an object with optional `defaultTimerValue`
- * property and a required `handleEditTimerValue` property, which is a function that takes a
- * `TimerValue` argument and returns `void`.
- * @property {TimerValue} defaultTimerValue - An optional property of type TimerValue that represents
- * the default value for a timer. If not provided, the timer will start with a default value.
- * @property handleEditTimerValue - A function that takes a value of type TimerValue as an argument and
- * does not return anything.
- */
 type Args = {
-  defaultTimerValue?: TimerValue;
-  handleEditTimerValue: (value: TimerValue) => void;
+  timerAtom: PrimitiveAtom<Timer>;
   playClickSound: () => void;
   playTimeUpSound: () => void;
 };
 
-/**
- * The `useTimerValue` function is a custom hook in TypeScript that manages the state and functionality
- * of a timer, including starting, pausing, resetting, and editing the timer value.
- * @param {Args}  - - `defaultTimerValue`: An object that represents the default timer value, with
- * properties `hours`, `minutes`, and `seconds`.
- * @returns The function `useTimerValue` returns an object with the following properties:
- */
-export const useTimerValue = ({
-  defaultTimerValue = {
-    hours: 0,
-    minutes: 6,
-    seconds: 0,
-  },
-  handleEditTimerValue,
+const useTimerValue = ({
   playClickSound,
   playTimeUpSound,
+  timerAtom,
 }: Args) => {
+  // title
+  const titleAtomRef = useRef(
+    focusAtom(timerAtom, (optic) => optic.prop("title")),
+  );
+
+  //   timerValue
+  const timerValueAtomRef = useRef(
+    focusAtom(timerAtom, (optic) => optic.prop("timerValue")),
+  );
+
+  const timerValue = useAtomValue(timerValueAtomRef.current);
+
+  const changeTimerValue = useAtomCallback(
+    useCallback((_get, set, timerValue: TimerValue) => {
+      set(timerValueAtomRef.current, timerValue);
+    }, []),
+  );
+
+  const defaultTimerValue = timerValue ?? { hours: 0, minutes: 6, seconds: 0 };
+
   const { hours, minutes, seconds, isRunning, pause, start, restart, resume } =
     useTimer({
-      expiryTimestamp: convertTimerValueToTimeStamp(defaultTimerValue),
+      expiryTimestamp: convertTimerValueToTimeStamp(
+        timerValue ?? { hours: 0, minutes: 6, seconds: 0 },
+      ),
       autoStart: false,
       onExpire: () => {
         playTimeUpSound();
@@ -79,7 +83,7 @@ export const useTimerValue = ({
   );
 
   const handleClickEditConfirm = useCallback((timerValue: TimerValue) => {
-    handleEditTimerValue(timerValue);
+    changeTimerValue(timerValue);
     restart(convertTimerValueToTimeStamp(timerValue), false);
     setIsEditing(false);
   }, []);
@@ -90,18 +94,23 @@ export const useTimerValue = ({
   );
 
   return {
-    isExpired,
-    isStarted,
-    isResume,
-    isRunning,
-    isEditing,
-    currentValue: { hours, minutes, seconds },
-    handleClickPause,
-    handleClickReset,
-    handleClickResume,
-    handleClickStart,
-    handleClickCount,
-    handleClickEditConfirm,
-    handleClickEditCancel,
+    title: titleAtomRef.current,
+    timerValue: {
+      defaultTimerValue,
+      isExpired,
+      isStarted,
+      isResume,
+      isRunning,
+      isEditing,
+      currentValue: { hours, minutes, seconds },
+      handleClickPause,
+      handleClickReset,
+      handleClickResume,
+      handleClickStart,
+      handleClickCount,
+      handleClickEditConfirm,
+      handleClickEditCancel,
+    },
   };
 };
+export default useTimerValue;
