@@ -13,7 +13,6 @@ const meta: Meta<typeof CountDownCardBody> = {
     },
     isEditing: false,
     "isVisible:start": true,
-    id: "1",
     "disabled:pause": true,
     "disabled:reset": false,
     "disabled:resume": false,

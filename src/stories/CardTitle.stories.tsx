@@ -1,10 +1,11 @@
 import { Meta, StoryObj } from "@storybook/react";
 import { CardTitle } from "../components/CardTitle";
+import { atom } from "jotai";
 
 const meta: Meta<typeof CardTitle> = {
   component: CardTitle,
   argTypes: {
-    "onEdit:title": { action: "edit title" },
+    titleAtom: atom("timer"),
     "onClick:deleteButton": { action: "delete button" },
   },
   tags: ["autodocs"],

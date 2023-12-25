@@ -1,18 +1,14 @@
 import { FC } from "react";
 import { Button, Card } from "react-daisyui";
 import Title from "./Title";
+import { PrimitiveAtom } from "jotai";
 
 export const CardTitle: FC<{
-  defaultTitle: string | undefined;
-  "onEdit:title": (title: string) => void;
+  titleAtom: PrimitiveAtom<string>;
   "onClick:deleteButton": () => void;
-}> = ({
-  defaultTitle,
-  "onEdit:title": onEditTitle,
-  "onClick:deleteButton": onClickDeleteButton,
-}) => (
+}> = ({ titleAtom, "onClick:deleteButton": onClickDeleteButton }) => (
   <Card.Title className="pl-2 pt-2 flex">
-    <Title defaultTitle={defaultTitle} onEditTitle={onEditTitle} />
+    <Title titleAtom={titleAtom} />
     <Card.Actions className="flex-none pr-2">
       <Button
         onClick={onClickDeleteButton}

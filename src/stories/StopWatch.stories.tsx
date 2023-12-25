@@ -6,7 +6,6 @@ const meta: Meta<typeof StopWatch> = {
   tags: ["autodocs"],
   argTypes: {
     onClickDelete: { action: "delete button clicked" },
-    onEditTitle: { action: "edit title" },
   },
 };
 

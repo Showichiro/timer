@@ -6,7 +6,6 @@ describe("Edit", () => {
     render(
       <Edit
         defaultValues={{ hours: 0, minutes: 0, seconds: 0 }}
-        id="1"
         onClick:cancel={vi.fn()}
         onClick:confirm={vi.fn()}
       />,
@@ -19,7 +18,6 @@ describe("Edit", () => {
     render(
       <Edit
         defaultValues={{ hours: 0, minutes: 0, seconds: 0 }}
-        id="1"
         onClick:cancel={mock}
         onClick:confirm={vi.fn()}
       />,
@@ -35,7 +33,6 @@ describe("Edit", () => {
     render(
       <Edit
         defaultValues={{ hours: 0, minutes: 0, seconds: 0 }}
-        id="1"
         onClick:cancel={vi.fn()}
         onClick:confirm={mock}
       />,

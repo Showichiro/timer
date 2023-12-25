@@ -3,18 +3,17 @@ import { CardWapper } from "./CardWrapper";
 import { CardTitle } from "./CardTitle";
 import { useStopWatchValue } from "../hooks/useStopWatchValue";
 import { StopWatchCardBody } from "./StopWatchCardBody";
+import { PrimitiveAtom } from "jotai";
 
 type StopWatchProps = {
-  defaultTitle?: string;
+  titleAtom: PrimitiveAtom<string>;
   onClickDelete: () => void;
-  onEditTitle: (title: string) => void;
   playClickSound: () => void;
 };
 
 export const StopWatch: FC<StopWatchProps> = ({
-  defaultTitle,
+  titleAtom,
   onClickDelete,
-  onEditTitle,
   playClickSound,
 }) => {
   const {
@@ -31,11 +30,7 @@ export const StopWatch: FC<StopWatchProps> = ({
   } = useStopWatchValue({ playClickSound });
   return (
     <CardWapper isExpired={false}>
-      <CardTitle
-        defaultTitle={defaultTitle}
-        onEdit:title={onEditTitle}
-        onClick:deleteButton={onClickDelete}
-      />
+      <CardTitle titleAtom={titleAtom} onClick:deleteButton={onClickDelete} />
       <StopWatchCardBody
         currentValues={{ hours, minutes, seconds }}
         disabled:pause={!isRunning}

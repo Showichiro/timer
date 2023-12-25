@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
-import { isLocalStorageAvailable } from "../utils/localStorageUtil";
+import { useEffect } from "react";
+import { atomWithStorage } from "jotai/utils";
+import { useAtom } from "jotai";
 
-/**
- * The `useIsFirst` function returns a boolean value indicating whether it is the first time the user
- * is accessing the application.
- * @returns The function `useIsFirst` returns a boolean value.
- */
+const isFirstAtom = atomWithStorage("isFirst", true);
+
 export const useIsFirst = (): boolean => {
-  const isAvailable = isLocalStorageAvailable();
-  const initializer = () => {
-    return isAvailable ? localStorage.getItem("isFirst") == null : true;
-  };
-  const [isFirst] = useState<boolean>(initializer);
+  const [isFirst] = useAtom<boolean>(isFirstAtom);
 
   useEffect(() => {
     localStorage.setItem("isFirst", "false");

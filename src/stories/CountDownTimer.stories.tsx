@@ -4,13 +4,9 @@ import { CountDownTimer } from "../components/CountDownTimer";
 const meta: Meta<typeof CountDownTimer> = {
   component: CountDownTimer,
   tags: ["autodocs"],
-  args: {
-    id: "1",
-  },
+  args: {},
   argTypes: {
     onClickDelete: { action: "delete button clicked" },
-    onEditTimerValue: { action: "edit timer value" },
-    onEditTitle: { action: "edit title" },
   },
 };
 

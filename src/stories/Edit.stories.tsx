@@ -8,7 +8,6 @@ const meta: Meta<typeof Edit> = {
     "onClick:confirm": { action: "confirm" },
   },
   args: {
-    id: "1",
     defaultValues: {
       hours: 1,
       minutes: 20,
