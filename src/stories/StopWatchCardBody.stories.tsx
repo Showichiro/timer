@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { StopWatchCardBody } from "../components/StopWatchCardBody";
+import { fn } from "@storybook/test";
 
 const meta: Meta<typeof StopWatchCardBody> = {
   component: StopWatchCardBody,
@@ -16,12 +17,10 @@ const meta: Meta<typeof StopWatchCardBody> = {
     "disabled:reset": true,
     "disabled:resume": true,
     "disabled:start": false,
-  },
-  argTypes: {
-    "onClick:start": { action: "onClick:start" },
-    "onClick:pause": { action: "onClick:pause" },
-    "onClick:reset": { action: "onClick:reset" },
-    "onClick:resume": { action: "onClick:resume" },
+    "onClick:start": fn(),
+    "onClick:pause": fn(),
+    "onClick:reset": fn(),
+    "onClick:resume": fn(),
   },
 };
 

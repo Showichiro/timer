@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { CountDownCardBody } from "../components/CountDownCardBody";
+import { fn } from "@storybook/test";
 
 const meta: Meta<typeof CountDownCardBody> = {
   component: CountDownCardBody,
@@ -19,15 +20,13 @@ const meta: Meta<typeof CountDownCardBody> = {
     "disabled:start": false,
     "isVisible:resume": false,
     isExpired: false,
-  },
-  argTypes: {
-    "onClick:count": { action: "onClick:count" },
-    "onClick:start": { action: "onClick:start" },
-    "onClick:editCancel": { action: "onClick:editcCancel" },
-    "onClick:editConfirm": { action: "onClick:editConfirm" },
-    "onClick:pause": { action: "onClick:pause" },
-    "onClick:reset": { action: "onClick:reset" },
-    "onClick:resume": { action: "onClick:resume" },
+    "onClick:count": fn(),
+    "onClick:start": fn(),
+    "onClick:editCancel": fn(),
+    "onClick:editConfirm": fn(),
+    "onClick:pause": fn(),
+    "onClick:reset": fn(),
+    "onClick:resume": fn(),
   },
 };
 
