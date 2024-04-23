@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { StopWatchCardBody } from "../components/StopWatchCardBody";
 import { fn } from "@storybook/test";
+import { StopWatchCardBody } from "../components/StopWatchCardBody";
 
 const meta: Meta<typeof StopWatchCardBody> = {
   component: StopWatchCardBody,
