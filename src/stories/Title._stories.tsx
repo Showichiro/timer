@@ -1,6 +1,6 @@
-import { Meta, StoryObj } from "@storybook/react";
-import Title from "../components/Title";
+import type { Meta, StoryObj } from "@storybook/react";
 import { atom } from "jotai";
+import Title from "../components/Title";
 
 const meta: Meta<typeof Title> = {
   component: Title,

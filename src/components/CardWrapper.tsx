@@ -1,6 +1,6 @@
-import { FC, ReactNode } from "react";
-import { Card } from "react-daisyui";
 import { clsx } from "clsx";
+import type { FC, ReactNode } from "react";
+import { Card } from "react-daisyui";
 
 export const CardWapper: FC<{
   isExpired: boolean;

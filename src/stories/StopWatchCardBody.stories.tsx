@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { StopWatchCardBody } from "../components/StopWatchCardBody";
 
 const meta: Meta<typeof StopWatchCardBody> = {

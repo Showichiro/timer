@@ -1,6 +1,6 @@
-import { Meta, StoryObj } from "@storybook/react";
-import { CardTitle } from "../components/CardTitle";
+import type { Meta, StoryObj } from "@storybook/react";
 import { atom } from "jotai";
+import { CardTitle } from "../components/CardTitle";
 
 const meta: Meta<typeof CardTitle> = {
   component: CardTitle,

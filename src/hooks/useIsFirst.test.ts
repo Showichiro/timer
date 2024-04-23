@@ -1,5 +1,5 @@
-import { useIsFirst } from "./useIsFirst";
 import { renderHook } from "../test/test-utils";
+import { useIsFirst } from "./useIsFirst";
 
 describe("useIsFirst", () => {
   afterEach(() => {

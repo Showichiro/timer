@@ -1,6 +1,6 @@
-import Joyride from "react-joyride";
-import { FC } from "react";
+import type { FC } from "react";
 import { useTranslation } from "react-i18next";
+import Joyride from "react-joyride";
 
 export const SiteTour: FC = () => {
   const { t } = useTranslation();

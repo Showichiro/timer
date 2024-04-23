@@ -1,9 +1,9 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { Button, Card } from "react-daisyui";
-import { Edit } from "./Edit";
-import { Count } from "./Count";
 import { useTranslation } from "react-i18next";
-import { TimerValue } from "../types/TimerValue";
+import type { TimerValue } from "../types/TimerValue";
+import { Count } from "./Count";
+import { Edit } from "./Edit";
 
 export const CountDownCardBody: FC<{
   isEditing: boolean;
@@ -54,7 +54,11 @@ export const CountDownCardBody: FC<{
       )}
       {!isEditing && (
         <>
-          <div onClick={onClickCount} className="timer-count">
+          <div
+            onClick={onClickCount}
+            onKeyUp={onClickCount}
+            className="timer-count"
+          >
             <Count
               isExpired={isExpired}
               hours={hours}
