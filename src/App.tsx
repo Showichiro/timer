@@ -1,13 +1,13 @@
-import useTimerList from "./hooks/useTimerList";
-import { SiteTour } from "./components/SiteTour";
-import { useIsFirst } from "./hooks/useIsFirst";
-import { Header } from "./components/Header";
-import { themeChange } from "theme-change";
 import { useEffect } from "react";
+import { themeChange } from "theme-change";
+import { Header } from "./components/Header";
 import { MainLayout } from "./components/MainLayout";
-import { useClickSound } from "./hooks/useClickSound";
-import { useTimeUpSound } from "./hooks/useTimeUpSound";
+import { SiteTour } from "./components/SiteTour";
 import TimerView from "./components/TimerView";
+import { useClickSound } from "./hooks/useClickSound";
+import { useIsFirst } from "./hooks/useIsFirst";
+import { useTimeUpSound } from "./hooks/useTimeUpSound";
+import useTimerList from "./hooks/useTimerList";
 import "./i18n/configs";
 
 function App() {

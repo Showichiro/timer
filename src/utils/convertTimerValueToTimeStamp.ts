@@ -1,4 +1,4 @@
-import { TimerValue } from "../types/TimerValue";
+import type { TimerValue } from "../types/TimerValue";
 
 /**
  * The function converts a timer value (hours, minutes, seconds) into a timestamp by adding the

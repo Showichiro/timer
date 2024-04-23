@@ -1,7 +1,7 @@
-import { FC } from "react";
+import type { PrimitiveAtom } from "jotai";
+import type { FC } from "react";
 import { Button, Card } from "react-daisyui";
 import Title from "./Title";
-import { PrimitiveAtom } from "jotai";
 
 export const CardTitle: FC<{
   titleAtom: PrimitiveAtom<string>;
@@ -18,6 +18,8 @@ export const CardTitle: FC<{
         aria-label="delete timer"
       >
         <svg
+          role="img"
+          aria-label="delete"
           xmlns="http://www.w3.org/2000/svg"
           className="h-6 w-6"
           fill="none"

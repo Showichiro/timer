@@ -1,9 +1,9 @@
-import { FC } from "react";
-import { CardWapper } from "./CardWrapper";
-import { CardTitle } from "./CardTitle";
+import type { PrimitiveAtom } from "jotai";
+import type { FC } from "react";
 import { useStopWatchValue } from "../hooks/useStopWatchValue";
+import { CardTitle } from "./CardTitle";
+import { CardWapper } from "./CardWrapper";
 import { StopWatchCardBody } from "./StopWatchCardBody";
-import { PrimitiveAtom } from "jotai";
 
 type StopWatchProps = {
   titleAtom: PrimitiveAtom<string>;

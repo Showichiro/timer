@@ -1,7 +1,7 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { Menu } from "react-daisyui";
 import { useTranslation } from "react-i18next";
-import { TimerType } from "../hooks/useTimerList";
+import type { TimerType } from "../hooks/useTimerList";
 
 const themes = [
   "light",
@@ -52,12 +52,12 @@ export const Header: FC<{ addTimer: (type: TimerType) => void }> = ({
                 <summary>{t("header.menu.timer.title")}</summary>
                 <ul className="p-2 bg-base-100">
                   <li>
-                    <button onClick={() => addTimer("countdown")}>
+                    <button type="button" onClick={() => addTimer("countdown")}>
                       {t("header.menu.timer.countdown")}
                     </button>
                   </li>
                   <li>
-                    <button onClick={() => addTimer("stopwatch")}>
+                    <button type="button" onClick={() => addTimer("stopwatch")}>
                       {t("header.menu.timer.stopwatch")}
                     </button>
                   </li>
@@ -70,7 +70,11 @@ export const Header: FC<{ addTimer: (type: TimerType) => void }> = ({
                 <ul className="p-2 bg-base-100">
                   {themes.map((val) => (
                     <li data-theme={val} key={`theme-${val}`}>
-                      <button data-set-theme={val} data-act-class="ACTIVECLASS">
+                      <button
+                        type="button"
+                        data-set-theme={val}
+                        data-act-class="ACTIVECLASS"
+                      >
                         {val}
                       </button>
                     </li>

@@ -1,9 +1,9 @@
-import { PrimitiveAtom, useAtomValue } from "jotai";
+import { type PrimitiveAtom, useAtomValue } from "jotai";
 import { focusAtom } from "jotai-optics";
-import { FC, useRef } from "react";
-import { Timer } from "../hooks/useTimerList";
-import { StopWatch } from "./StopWatch";
+import { type FC, useRef } from "react";
+import type { Timer } from "../hooks/useTimerList";
 import { CountDownTimer } from "./CountDownTimer";
+import { StopWatch } from "./StopWatch";
 
 const TimerView: FC<{
   timerAtom: PrimitiveAtom<Timer>;

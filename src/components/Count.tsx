@@ -1,6 +1,6 @@
-import { FC } from "react";
-import { Countdown } from "react-daisyui";
 import { clsx } from "clsx";
+import type { FC } from "react";
+import { Countdown } from "react-daisyui";
 
 type Props = {
   isExpired: boolean;

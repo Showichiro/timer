@@ -1,6 +1,6 @@
-import { PrimitiveAtom, useAtomValue } from "jotai";
+import { type PrimitiveAtom, useAtomValue } from "jotai";
 import { useAtomCallback } from "jotai/utils";
-import { FC, useCallback } from "react";
+import { type FC, useCallback } from "react";
 import { Input } from "react-daisyui";
 
 type TitleProps = {

@@ -1,8 +1,8 @@
-import { FC } from "react";
-import { TimerValue } from "../types/TimerValue";
-import { useForm } from "react-hook-form";
+import type { FC } from "react";
 import { Button, Card, Select } from "react-daisyui";
+import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
+import type { TimerValue } from "../types/TimerValue";
 
 type Props = {
   defaultValues: TimerValue;
@@ -25,7 +25,13 @@ export const Edit: FC<Props> = ({
         <label>
           <Select size="lg" {...register("hours")}>
             {[...Array(100)].map((_, i) => (
-              <option key={`hours-${i}`} value={i}>
+              <option
+                key={`hours-${
+                  // biome-ignore lint/suspicious/noArrayIndexKey:
+                  i
+                }`}
+                value={i}
+              >
                 {i}
               </option>
             ))}
@@ -35,7 +41,13 @@ export const Edit: FC<Props> = ({
         <label>
           <Select size="lg" {...register("minutes")}>
             {[...Array(60)].map((_, i) => (
-              <option key={`minutes-${i}`} value={i}>
+              <option
+                key={`minutes-${
+                  // biome-ignore lint/suspicious/noArrayIndexKey:
+                  i
+                }`}
+                value={i}
+              >
                 {i}
               </option>
             ))}
@@ -46,7 +58,13 @@ export const Edit: FC<Props> = ({
         <label>
           <Select size="lg" {...register("seconds")}>
             {[...Array(60)].map((_, i) => (
-              <option key={`minutes-${i}`} value={i}>
+              <option
+                key={`minutes-${
+                  // biome-ignore lint/suspicious/noArrayIndexKey:
+                  i
+                }`}
+                value={i}
+              >
                 {i}
               </option>
             ))}

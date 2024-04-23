@@ -1,5 +1,5 @@
-import { useStopwatch } from "react-timer-hook";
 import { useCallback } from "react";
+import { useStopwatch } from "react-timer-hook";
 
 type Args = {
   playClickSound: () => void;

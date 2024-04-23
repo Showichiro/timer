@@ -1,11 +1,11 @@
-import { PrimitiveAtom, useAtomValue } from "jotai";
+import { type PrimitiveAtom, useAtomValue } from "jotai";
 import { focusAtom } from "jotai-optics";
-import { Timer } from "./useTimerList";
-import { useCallback, useRef, useState } from "react";
 import { useAtomCallback } from "jotai/utils";
+import { useCallback, useRef, useState } from "react";
 import { useTimer } from "react-timer-hook";
+import type { TimerValue } from "../types/TimerValue";
 import { convertTimerValueToTimeStamp } from "../utils/convertTimerValueToTimeStamp";
-import { TimerValue } from "../types/TimerValue";
+import type { Timer } from "./useTimerList";
 
 type Args = {
   timerAtom: PrimitiveAtom<Timer>;
@@ -73,25 +73,22 @@ const useTimerValue = ({
   const handleClickReset = useCallback(() => {
     playClickSound();
     restart(convertTimerValueToTimeStamp(defaultTimerValue), false);
-  }, [restart, playClickSound]);
+  }, [restart, playClickSound, defaultTimerValue]);
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleClickCount = useCallback(
-    () => setIsEditing(true),
-    [setIsEditing],
+  const handleClickCount = useCallback(() => setIsEditing(true), []);
+
+  const handleClickEditConfirm = useCallback(
+    (timerValue: TimerValue) => {
+      changeTimerValue(timerValue);
+      restart(convertTimerValueToTimeStamp(timerValue), false);
+      setIsEditing(false);
+    },
+    [restart, changeTimerValue],
   );
 
-  const handleClickEditConfirm = useCallback((timerValue: TimerValue) => {
-    changeTimerValue(timerValue);
-    restart(convertTimerValueToTimeStamp(timerValue), false);
-    setIsEditing(false);
-  }, []);
-
-  const handleClickEditCancel = useCallback(
-    () => setIsEditing(false),
-    [setIsEditing],
-  );
+  const handleClickEditCancel = useCallback(() => setIsEditing(false), []);
 
   return {
     title: titleAtomRef.current,

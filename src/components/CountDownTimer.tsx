@@ -1,10 +1,10 @@
-import { FC } from "react";
-import { CardWapper } from "./CardWrapper";
-import { CardTitle } from "./CardTitle";
-import { CountDownCardBody } from "./CountDownCardBody";
+import type { PrimitiveAtom } from "jotai";
+import type { FC } from "react";
+import type { Timer } from "../hooks/useTimerList";
 import useTimerValue from "../hooks/useTimerValue";
-import { PrimitiveAtom } from "jotai";
-import { Timer } from "../hooks/useTimerList";
+import { CardTitle } from "./CardTitle";
+import { CardWapper } from "./CardWrapper";
+import { CountDownCardBody } from "./CountDownCardBody";
 
 type TimerProps = {
   timerAtom: PrimitiveAtom<Timer>;

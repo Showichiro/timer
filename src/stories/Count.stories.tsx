@@ -1,4 +1,4 @@
-import { Meta, StoryObj } from "@storybook/react";
+import type { Meta, StoryObj } from "@storybook/react";
 import { Count } from "../components/Count";
 
 const meta: Meta<typeof Count> = {

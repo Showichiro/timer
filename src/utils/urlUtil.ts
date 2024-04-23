@@ -1,4 +1,4 @@
-import { TimerValue } from "../types/TimerValue";
+import type { TimerValue } from "../types/TimerValue";
 
 /**
  * The function `getTimerFromUrl` parses the URL and returns a TimerValue object if the URL contains a
@@ -12,7 +12,7 @@ export const getTimerFromUrl = (): TimerValue | null => {
     if (url.match(/^[0-9]{1,2}$/)) {
       return {
         hours: 0,
-        minutes: parseInt(url),
+        minutes: Number.parseInt(url),
         seconds: 0,
       };
     }
@@ -21,17 +21,17 @@ export const getTimerFromUrl = (): TimerValue | null => {
       const [minutes, seconds] = url.split(":");
       return {
         hours: 0,
-        minutes: parseInt(minutes),
-        seconds: parseInt(seconds),
+        minutes: Number.parseInt(minutes),
+        seconds: Number.parseInt(seconds),
       };
     }
     // paramが22:22:22の形式のとき
     if (url.match(/^[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}$/)) {
       const [hours, minutes, seconds] = url.split(":");
       return {
-        hours: parseInt(hours),
-        minutes: parseInt(minutes),
-        seconds: parseInt(seconds),
+        hours: Number.parseInt(hours),
+        minutes: Number.parseInt(minutes),
+        seconds: Number.parseInt(seconds),
       };
     }
   }

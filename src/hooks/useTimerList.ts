@@ -1,9 +1,9 @@
-import { PrimitiveAtom, useAtom } from "jotai";
+import { type PrimitiveAtom, useAtom } from "jotai";
 import { atomWithStorage, splitAtom } from "jotai/utils";
-import { getTimerFromUrl } from "../utils/urlUtil";
-import { TimerValue } from "../types/TimerValue";
 import { useCallback } from "react";
 import i18n from "../i18n/configs";
+import type { TimerValue } from "../types/TimerValue";
+import { getTimerFromUrl } from "../utils/urlUtil";
 
 export type TimerType = "countdown" | "stopwatch";
 

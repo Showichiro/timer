@@ -1,5 +1,5 @@
-import timeUpSound from "/timeUpSound.mp3";
 import { useAudio } from "react-use";
+import timeUpSound from "/timeUpSound.mp3";
 
 /**
  * The function `useTimeUpSound` returns a hook that plays a time up sound when called.
