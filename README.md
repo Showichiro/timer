@@ -29,7 +29,7 @@ corepack enable pnpm
 pnpm -v
 ```
 
-### dev server
+### Dev server
 
 ```shell
 pnpm i --frozen-lockfile
