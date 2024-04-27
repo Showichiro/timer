@@ -8,7 +8,7 @@ Countdown / Stopwatch timer application. You can set as many timers as you want.
 
 ## production
 
-https://showichiro.github.io/timer/
+[Production Environment](https://showichiro.github.io/timer/)
 
 
 ## development
