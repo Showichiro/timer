@@ -22,7 +22,7 @@ nvm install
 nvm use
 ```
 
-The project's package manager uses pnpm.The version of pnpm is specified by corepack, and the following command is entered.
+The project's package manager uses pnpm. The version of pnpm is specified by corepack, and the following command is entered.
 
 ```shell
 corepack enable pnpm
