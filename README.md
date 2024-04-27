@@ -52,4 +52,3 @@ pnpm storybook
 
 ```shell
 pnpm check
-```
