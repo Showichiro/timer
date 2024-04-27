@@ -1,10 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
 import { Header } from "../components/Header";
 
 const meta: Meta<typeof Header> = {
   component: Header,
   tags: ["autodocs"],
-  argTypes: { addTimer: { action: "clicked" } },
+  args: {
+    addTimer: fn(),
+  },
 };
 
 export default meta;
