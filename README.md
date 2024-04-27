@@ -15,7 +15,7 @@ Countdown / Stopwatch timer application. You can set as many timers as you want.
 
 ### requirement
 
-nodejs must be installed. If you are using `nvm`, you can install the specified version of nodejs with the following command.
+Node.js must be installed. If you are using `nvm`, you can install the specified version of nodejs with the following command.
 
 ```shell
 nvm install
