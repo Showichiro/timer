@@ -48,7 +48,7 @@ pnpm test
 pnpm storybook
 ```
 
-### check(format & lint)
+### check (format & lint)
 
 ```shell
 pnpm check
