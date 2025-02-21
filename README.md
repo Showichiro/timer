@@ -15,16 +15,19 @@ Countdown / Stopwatch timer application. You can set as many timers as you want.
 
 ### requirement
 
-Node.js must be installed. If you are using `nvm`, you can install the specified version of nodejs with the following command.
+Node.js installation is required. It is recommended to use [Volta](https://volta.sh) to install Node.js.
 
 ```shell
-nvm install
-nvm use
-```
+# Install Volta
+curl https://get.volta.sh | bash
 
-The project's package manager uses pnpm. The version of pnpm is specified by corepack, and the following command is entered.
+# Install Node.js
+volta install node
 
-```shell
+# Install corepack
+volta install corepack
+
+# Enable pnpm
 corepack enable pnpm
 pnpm -v
 ```

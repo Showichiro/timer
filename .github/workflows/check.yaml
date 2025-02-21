@@ -16,12 +16,14 @@ jobs:
     steps:
       - name: Setup repo
         uses: actions/checkout@v4
+      - name: Setup Volta
+        uses: volta-cli/action@v4
       - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "lts/*"
+        run: volta install node
+      - name: Setup corepack
+        run: volta install corepack@0.31.0
       - name: Setup Pnpm
-        run: corepack enable pnpm
+        run: corepack enable
       - name: install
         run: pnpm install --frozen-lockfile
       - name: lint & format
