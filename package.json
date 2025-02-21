@@ -29,7 +29,7 @@
     "react-dom": "^18.3.1",
     "react-hook-form": "^7.52.1",
     "react-i18next": "^13.5.0",
-    "react-joyride": "^2.8.2",
+    "react-joyride": "^2.9.3",
     "react-timer-hook": "^3.0.7",
     "react-use": "^17.5.1",
     "theme-change": "^2.5.0"
