@@ -65,5 +65,8 @@
   },
   "readme": "ERROR: No README data found!",
   "_id": "timer@0.0.0",
-  "packageManager": "pnpm@9.0.5+sha256.61bd66913b52012107ec25a6ee4d6a161021ab99e04f6acee3aa50d0e34b4af9"
+  "packageManager": "pnpm@9.0.5+sha256.61bd66913b52012107ec25a6ee4d6a161021ab99e04f6acee3aa50d0e34b4af9",
+  "volta": {
+    "node": "20.18.3"
+  }
 }
