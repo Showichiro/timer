@@ -16,8 +16,10 @@ jobs:
     steps:
       - name: Setup repo
         uses: actions/checkout@v4
-      - name: Setup Node
+      - name: Setup Volta
         uses: volta-cli/action@v4
+      - name: Setup Node
+        run: volta install node
       - name: Setup corepack
         run: volta install corepack@0.31.0
       - name: Setup Pnpm
