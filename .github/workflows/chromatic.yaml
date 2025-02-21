@@ -22,7 +22,7 @@ jobs:
         with:
           node-version: "20.x"
       - name: Setup Pnpm
-        run: corepack enable pnpm
+        run: corepack enable
       - name: install
         run: pnpm install --frozen-lockfile
         # 👇 Adds Chromatic as a step in the workflow
