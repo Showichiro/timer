@@ -18,9 +18,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
       - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20.x"
+        uses: volta-cli/action@v4
+      - name: Setup corepack
+        run: volta install corepack@0.31.0
       - name: Setup Pnpm
         run: corepack enable
       - name: install
