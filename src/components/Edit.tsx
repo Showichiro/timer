@@ -22,7 +22,7 @@ export const Edit: FC<Props> = ({
   return (
     <form onSubmit={onSubmit(onClickConfirm)}>
       <div className="grid grid-cols-3 gap-2 my-12">
-        <label>
+        <div>
           <Select size="lg" {...register("hours")}>
             {[...Array(100)].map((_, i) => (
               <option
@@ -37,8 +37,8 @@ export const Edit: FC<Props> = ({
             ))}
           </Select>
           <span className="ml-2">h</span>
-        </label>
-        <label>
+        </div>
+        <div>
           <Select size="lg" {...register("minutes")}>
             {[...Array(60)].map((_, i) => (
               <option
@@ -54,8 +54,8 @@ export const Edit: FC<Props> = ({
           </Select>
 
           <span className="ml-2">m</span>
-        </label>
-        <label>
+        </div>
+        <div>
           <Select size="lg" {...register("seconds")}>
             {[...Array(60)].map((_, i) => (
               <option
@@ -70,7 +70,7 @@ export const Edit: FC<Props> = ({
             ))}
           </Select>
           <span className="ml-2">s</span>
-        </label>
+        </div>
       </div>
       <Card.Actions className="grid grid-cols-2 pt-0.5 gap-x-6 gap-y-6 xl:gap-x-2">
         <Button size="lg" color="warning" onClick={onClickCancel}>

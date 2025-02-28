@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "check": "biome check --apply src/ .storybook",
+    "check": "biome check --write src/ .storybook",
     "check:ci": "biome ci src/ .storybook",
     "type-check": "tsc",
     "test": "vitest",
