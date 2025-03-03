@@ -31,7 +31,7 @@
     "react-i18next": "^13.5.0",
     "react-joyride": "^2.9.3",
     "react-timer-hook": "^3.0.7",
-    "react-use": "^17.5.1",
+    "react-use": "^17.6.0",
     "theme-change": "^2.5.0"
   },
   "devDependencies": {
