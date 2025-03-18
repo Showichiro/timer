@@ -52,7 +52,7 @@
     "@vitejs/plugin-react": "^4.3.4",
     "autoprefixer": "^10.4.20",
     "chromatic": "^10.9.6",
-    "daisyui": "^4.12.10",
+    "daisyui": "^4.12.24",
     "jsdom": "^23.2.0",
     "postcss": "^8.5.3",
     "rollup-plugin-visualizer": "^5.14.0",
