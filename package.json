@@ -53,7 +53,7 @@
     "autoprefixer": "^10.4.20",
     "chromatic": "^10.9.6",
     "daisyui": "^4.12.24",
-    "jsdom": "^23.2.0",
+    "jsdom": "^26.0.0",
     "postcss": "^8.5.3",
     "rollup-plugin-visualizer": "^5.14.0",
     "storybook": "^8.6.4",
