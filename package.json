@@ -30,7 +30,7 @@
     "react-hook-form": "^7.54.2",
     "react-i18next": "^15.4.1",
     "react-joyride": "^2.9.3",
-    "react-timer-hook": "^3.0.7",
+    "react-timer-hook": "^4.0.5",
     "react-use": "^17.6.0",
     "theme-change": "^2.5.0"
   },
