@@ -21,8 +21,8 @@ importers:
         specifier: ^2.12.1
         version: 2.12.1(@types/react@18.3.3)(react@18.3.1)
       jotai-optics:
-        specifier: ^0.3.2
-        version: 0.3.2(jotai@2.12.1(@types/react@18.3.3)(react@18.3.1))(optics-ts@2.4.1)
+        specifier: ^0.4.0
+        version: 0.4.0(jotai@2.12.1(@types/react@18.3.3)(react@18.3.1))(optics-ts@2.4.1)
       optics-ts:
         specifier: ^2.4.1
         version: 2.4.1
@@ -2609,11 +2609,11 @@ packages:
     resolution: {integrity: sha512-2yTgeWTWzMWkHu6Jp9NKgePDaYHbntiwvYuuJLbbN9vl7DC9DvXKOB2BC3ZZ92D3cvV/aflH0osDfwpHepQ53w==}
     hasBin: true
 
-  jotai-optics@0.3.2:
-    resolution: {integrity: sha512-RH6SvqU5hmkVqnHmaqf9zBXvIAs4jLxkDHS4fr5ljuBKHs8+HQ02v+9hX7ahTppxx6dUb0GGUE80jQKJ0kFTLw==}
+  jotai-optics@0.4.0:
+    resolution: {integrity: sha512-osbEt9AgS55hC4YTZDew2urXKZkaiLmLqkTS/wfW5/l0ib8bmmQ7kBXSFaosV6jDDWSp00IipITcJARFHdp42g==}
     peerDependencies:
-      jotai: '>=1.11.0'
-      optics-ts: '*'
+      jotai: '>=2.0.0'
+      optics-ts: '>=2.0.0'
 
   jotai@2.12.1:
     resolution: {integrity: sha512-VUW0nMPYIru5g89tdxwr9ftiVdc/nGV9jvHISN8Ucx+m1vI9dBeHemfqYzEuw5XSkmYjD/MEyApN9k6yrATsZQ==}
@@ -6602,7 +6602,7 @@ snapshots:
 
   jiti@1.21.6: {}
 
-  jotai-optics@0.3.2(jotai@2.12.1(@types/react@18.3.3)(react@18.3.1))(optics-ts@2.4.1):
+  jotai-optics@0.4.0(jotai@2.12.1(@types/react@18.3.3)(react@18.3.1))(optics-ts@2.4.1):
     dependencies:
       jotai: 2.12.1(@types/react@18.3.3)(react@18.3.1)
       optics-ts: 2.4.1
