@@ -21,7 +21,7 @@
     "@storybook/test": "^8.2.6",
     "clsx": "^2.1.1",
     "i18next": "^24.2.2",
-    "jotai": "^2.12.1",
+    "jotai": "^2.12.2",
     "jotai-optics": "^0.4.0",
     "optics-ts": "^2.4.1",
     "react": "^18.3.1",
