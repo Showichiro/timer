@@ -20,7 +20,7 @@
   "dependencies": {
     "@storybook/test": "^8.6.12",
     "clsx": "^2.1.1",
-    "i18next": "^24.2.2",
+    "i18next": "^25.0.1",
     "jotai": "^2.12.2",
     "jotai-optics": "^0.4.0",
     "optics-ts": "^2.4.1",
