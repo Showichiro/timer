@@ -5,9 +5,12 @@ import { initReactI18next } from "react-i18next";
 import translation_en from "./en.json";
 import translation_ja from "./ja.json";
 
-const languageList: string[] = ["ja", "en"];
+const languageList = ["ja", "en"] as const;
 
-const browserLanguage = window.navigator.language;
+export const getSupportedLanguage = (browserLanguage: string) => {
+  const baseLanguage = browserLanguage.split("-")[0].toLowerCase();
+  return languageList.find((language) => language === baseLanguage) ?? "en";
+};
 
 const resources = {
   ja: {
@@ -22,7 +25,7 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources,
-    lng: languageList.includes(browserLanguage) ? browserLanguage : "en",
+    lng: getSupportedLanguage(window.navigator.language),
     interpolation: {
       escapeValue: false, // react already safes from xss
     },
