@@ -1,4 +1,4 @@
-import { Provider, atom } from "jotai";
+import { atom, Provider } from "jotai";
 import { render, screen, userEvent } from "../test/test-utils";
 import Title from "./Title";
 

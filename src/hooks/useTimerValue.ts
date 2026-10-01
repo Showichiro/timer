@@ -1,6 +1,6 @@
 import { type PrimitiveAtom, useAtomValue } from "jotai";
-import { focusAtom } from "jotai-optics";
 import { useAtomCallback } from "jotai/utils";
+import { focusAtom } from "jotai-optics";
 import { useCallback, useRef, useState } from "react";
 import { useTimer } from "react-timer-hook";
 import type { TimerValue } from "../types/TimerValue";

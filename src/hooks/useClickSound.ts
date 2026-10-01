@@ -1,6 +1,6 @@
 import clickSound from "/clickSound.mp3";
 
-import { useAudio } from "react-use";
+import { useSound } from "./useSound";
 
 /**
  * The useClickSound function returns a playClickSound function that can be used to play a click sound.
@@ -8,7 +8,5 @@ import { useAudio } from "react-use";
  * function.
  */
 export const useClickSound = () => {
-  const [audio, , control] = useAudio({ src: clickSound });
-
-  return { audio, control };
+  return useSound(clickSound);
 };

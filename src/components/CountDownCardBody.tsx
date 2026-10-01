@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { Button, Card } from "react-daisyui";
 import { useTranslation } from "react-i18next";
 import type { TimerValue } from "../types/TimerValue";
 import { Count } from "./Count";
@@ -44,7 +43,7 @@ export const CountDownCardBody: FC<{
 }) => {
   const { t } = useTranslation();
   return (
-    <Card.Body>
+    <div className="card-body">
       {isEditing && (
         <Edit
           defaultValues={defaultValues}
@@ -54,10 +53,11 @@ export const CountDownCardBody: FC<{
       )}
       {!isEditing && (
         <>
-          <div
+          <button
+            type="button"
             onClick={onClickCount}
-            onKeyUp={onClickCount}
-            className="timer-count"
+            aria-label={t("timer.action.edit")}
+            className="timer-count cursor-pointer rounded-sm focus-visible:outline-2 focus-visible:outline-primary"
           >
             <Count
               isExpired={isExpired}
@@ -65,47 +65,47 @@ export const CountDownCardBody: FC<{
               minutes={minutes}
               seconds={seconds}
             />
-          </div>
-          <Card.Actions className="timer-action grid grid-cols-3 xl:grid-cols-3 pt-0.5 gap-x-6 gap-y-6 xl:gap-x-2">
+          </button>
+          <div className="card-actions timer-action grid grid-cols-3 xl:grid-cols-3 pt-0.5 gap-x-2 sm:gap-x-6 gap-y-6 xl:gap-x-2">
             {isVisibleResume && (
-              <Button
+              <button
+                type="button"
                 onClick={onClickResume}
                 disabled={disabledResume}
-                size="md"
-                color="primary"
+                className="btn btn-md text-xs sm:text-sm px-2 sm:px-4 btn-primary"
               >
                 {t("timer.action.resume")}
-              </Button>
+              </button>
             )}
             {isVisibleStart && (
-              <Button
+              <button
+                type="button"
                 onClick={onClickStart}
                 disabled={disabledStart}
-                size="md"
-                color="primary"
+                className="btn btn-md text-xs sm:text-sm px-2 sm:px-4 btn-primary"
               >
                 {t("timer.action.start")}
-              </Button>
+              </button>
             )}
-            <Button
+            <button
+              type="button"
               onClick={onClickPause}
               disabled={disabledPause}
-              size="md"
-              color="secondary"
+              className="btn btn-md text-xs sm:text-sm px-2 sm:px-4 btn-secondary"
             >
               {t("timer.action.pause")}
-            </Button>
-            <Button
+            </button>
+            <button
+              type="button"
               onClick={onClickReset}
-              size="md"
-              color="accent"
+              className="btn btn-md text-xs sm:text-sm px-2 sm:px-4 btn-accent"
               disabled={disabledReset}
             >
               {t("timer.action.reset")}
-            </Button>
-          </Card.Actions>
+            </button>
+          </div>
         </>
       )}
-    </Card.Body>
+    </div>
   );
 };

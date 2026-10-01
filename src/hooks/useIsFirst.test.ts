@@ -1,19 +1,19 @@
 import { renderHook } from "../test/test-utils";
 import { useIsFirst } from "./useIsFirst";
 
+const { isLocalStorageAvailable } = vi.hoisted(() => ({
+  isLocalStorageAvailable: vi.fn(() => true),
+}));
+
+vi.mock("../utils/localStorageUtil", () => {
+  return {
+    isLocalStorageAvailable,
+  };
+});
+
 describe("useIsFirst", () => {
   afterEach(() => {
     vi.resetAllMocks();
-  });
-
-  const { isLocalStorageAvailable } = vi.hoisted(() => ({
-    isLocalStorageAvailable: vi.fn(() => true),
-  }));
-
-  vi.mock("../utils/localStorageUtil", () => {
-    return {
-      isLocalStorageAvailable,
-    };
   });
 
   it("should return true when localStorage is not available", () => {

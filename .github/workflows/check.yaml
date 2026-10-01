@@ -15,15 +15,16 @@ jobs:
 
     steps:
       - name: Setup repo
-        uses: actions/checkout@v4
-      - name: Setup Volta
-        uses: volta-cli/action@v4
+        uses: actions/checkout@v7.0.1
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6.1.0
+        with:
+          version: 12.8.1
       - name: Setup Node
-        run: volta install node
-      - name: Setup corepack
-        run: volta install corepack@0.31.0
-      - name: Setup Pnpm
-        run: corepack enable
+        uses: actions/setup-node@v7.0.0
+        with:
+          node-version-file: .node-version
+          cache: pnpm
       - name: install
         run: pnpm install --frozen-lockfile
       - name: lint & format
@@ -31,4 +32,9 @@ jobs:
       - name: type-check
         run: pnpm type-check
       - name: test
-        run: pnpm run test --run
+        run: pnpm coverage
+
+      - name: Production build
+        run: pnpm build
+      - name: Storybook build
+        run: pnpm build-storybook

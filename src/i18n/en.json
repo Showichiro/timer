@@ -18,5 +18,9 @@
   "header.menu.theme": "Theme",
   "header.menu.timer.title": "Add Timer",
   "header.menu.timer.countdown": "Countdown",
-  "header.menu.timer.stopwatch": "Stopwatch"
+  "header.menu.timer.stopwatch": "Stopwatch",
+  "timer.action.edit": "Edit time",
+  "timer.unit.hours": "Hours",
+  "timer.unit.minutes": "Minutes",
+  "timer.unit.seconds": "Seconds"
 }
