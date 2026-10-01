@@ -1,5 +1,4 @@
 import type { FC } from "react";
-import { Menu } from "react-daisyui";
 import { useTranslation } from "react-i18next";
 import type { TimerType } from "../hooks/useTimerList";
 
@@ -42,15 +41,19 @@ export const Header: FC<{ addTimer: (type: TimerType) => void }> = ({
   return (
     <div className="sticky top-0 z-50 px-2">
       <div className="navbar bg-base-100">
-        <div className="flex-1">
-          <div className="text-3xl normal-case font-black">{t("title")}</div>
+        <div className="flex-1 shrink-0">
+          <div className="text-xl sm:text-3xl whitespace-nowrap normal-case font-black">
+            {t("title")}
+          </div>
         </div>
         <div className="flex-none">
-          <Menu horizontal className="px-3">
-            <Menu.Item>
+          <ul className="menu menu-horizontal px-0 sm:px-3">
+            <li>
               <details className="timer-add">
-                <summary>{t("header.menu.timer.title")}</summary>
-                <ul className="p-2 bg-base-100">
+                <summary className="text-xs sm:text-sm px-2 sm:px-3">
+                  {t("header.menu.timer.title")}
+                </summary>
+                <ul className="p-2 bg-base-100 z-10">
                   <li>
                     <button type="button" onClick={() => addTimer("countdown")}>
                       {t("header.menu.timer.countdown")}
@@ -63,11 +66,13 @@ export const Header: FC<{ addTimer: (type: TimerType) => void }> = ({
                   </li>
                 </ul>
               </details>
-            </Menu.Item>
-            <Menu.Item>
+            </li>
+            <li>
               <details className="timer-theme">
-                <summary>{t("header.menu.theme")}</summary>
-                <ul className="p-2 bg-base-100">
+                <summary className="text-xs sm:text-sm px-2 sm:px-3">
+                  {t("header.menu.theme")}
+                </summary>
+                <ul className="p-2 bg-base-100 z-10 right-0 max-h-[calc(100dvh-6rem)] overflow-y-auto">
                   {themes.map((val) => (
                     <li data-theme={val} key={`theme-${val}`}>
                       <button
@@ -81,8 +86,8 @@ export const Header: FC<{ addTimer: (type: TimerType) => void }> = ({
                   ))}
                 </ul>
               </details>
-            </Menu.Item>
-          </Menu>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

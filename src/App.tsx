@@ -6,8 +6,8 @@ import { SiteTour } from "./components/SiteTour";
 import TimerView from "./components/TimerView";
 import { useClickSound } from "./hooks/useClickSound";
 import { useIsFirst } from "./hooks/useIsFirst";
-import { useTimeUpSound } from "./hooks/useTimeUpSound";
 import useTimerList from "./hooks/useTimerList";
+import { useTimeUpSound } from "./hooks/useTimeUpSound";
 import "./i18n/configs";
 
 function App() {

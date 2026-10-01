@@ -1,7 +1,6 @@
 import { type PrimitiveAtom, useAtomValue } from "jotai";
 import { useAtomCallback } from "jotai/utils";
 import { type FC, useCallback } from "react";
-import { Input } from "react-daisyui";
 
 type TitleProps = {
   titleAtom: PrimitiveAtom<string>;
@@ -18,11 +17,9 @@ const Title: FC<TitleProps> = ({ titleAtom }) => {
     ),
   );
   return (
-    <Input
-      className="timer-title basis-full h-14 text-2xl md:text-3xl lg:text-4xl truncate ..."
+    <input
+      className="input input-primary min-w-0 w-full timer-title basis-full h-14 text-2xl md:text-3xl lg:text-4xl truncate ..."
       type="text"
-      bordered
-      color="primary"
       value={value}
       onChange={(e) => changeValue(e.target.value)}
       aria-label="timer name"

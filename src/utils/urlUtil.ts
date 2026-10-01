@@ -12,7 +12,7 @@ export const getTimerFromUrl = (): TimerValue | null => {
     if (url.match(/^[0-9]{1,2}$/)) {
       return {
         hours: 0,
-        minutes: Number.parseInt(url),
+        minutes: Number.parseInt(url, 10),
         seconds: 0,
       };
     }
@@ -21,17 +21,17 @@ export const getTimerFromUrl = (): TimerValue | null => {
       const [minutes, seconds] = url.split(":");
       return {
         hours: 0,
-        minutes: Number.parseInt(minutes),
-        seconds: Number.parseInt(seconds),
+        minutes: Number.parseInt(minutes, 10),
+        seconds: Number.parseInt(seconds, 10),
       };
     }
     // paramが22:22:22の形式のとき
     if (url.match(/^[0-9]{1,2}:[0-9]{1,2}:[0-9]{1,2}$/)) {
       const [hours, minutes, seconds] = url.split(":");
       return {
-        hours: Number.parseInt(hours),
-        minutes: Number.parseInt(minutes),
-        seconds: Number.parseInt(seconds),
+        hours: Number.parseInt(hours, 10),
+        minutes: Number.parseInt(minutes, 10),
+        seconds: Number.parseInt(seconds, 10),
       };
     }
   }

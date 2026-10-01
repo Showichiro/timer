@@ -10,27 +10,18 @@ Countdown / Stopwatch timer application. You can set as many timers as you want.
 
 [Production Environment](https://showichiro.github.io/timer/)
 
-
 ## development
 
 ### requirement
 
-Node.js installation is required. It is recommended to use [Volta](https://volta.sh) to install Node.js.
+Use Node.js 24 LTS (the exact version is in `.node-version`) and pnpm 12.8.1.
+Install Node from [nodejs.org](https://nodejs.org/), then install the pinned package manager:
 
 ```shell
-# Install Volta
-curl https://get.volta.sh | bash
-
-# Install Node.js
-volta install node
-
-# Install corepack
-volta install corepack
-
-# Enable pnpm
-corepack enable pnpm
-pnpm -v
+npm install --global pnpm@12.8.1
 ```
+
+For a bootstrap without a global pnpm installation, use `npm exec --yes --package=pnpm@12.8.1 -- pnpm <command>` with the same commands below.
 
 ### Dev server
 
@@ -56,3 +47,9 @@ pnpm storybook
 ```shell
 pnpm check
 ```
+
+### Validation
+
+Run `pnpm type-check`, `pnpm check:ci`, `pnpm test --run`, `pnpm coverage`, `pnpm build`, and `pnpm build-storybook`. The app remains deployed at `/timer/` and uses local storage for saved timers.
+
+See [the migration report](docs/toolchain-migration.md) for dependency versions and migration evidence.

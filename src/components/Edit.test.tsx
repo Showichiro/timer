@@ -37,12 +37,24 @@ describe("Edit", () => {
         onClick:confirm={mock}
       />,
     );
-    await userEvent.type(screen.getAllByRole("combobox")[0], "1");
-    await userEvent.type(screen.getAllByRole("combobox")[1], "2");
-    await userEvent.type(screen.getAllByRole("combobox")[2], "3");
+    await userEvent.selectOptions(
+      screen.getByRole("combobox", { name: "timer.unit.hours" }),
+      "1",
+    );
+    await userEvent.selectOptions(
+      screen.getByRole("combobox", { name: "timer.unit.minutes" }),
+      "2",
+    );
+    await userEvent.selectOptions(
+      screen.getByRole("combobox", { name: "timer.unit.seconds" }),
+      "3",
+    );
     await userEvent.click(
       screen.getByRole("button", { name: "timer.action.confirm" }),
     );
-    expect(mock).toHaveBeenCalled();
+    expect(mock).toHaveBeenCalledWith(
+      { hours: 1, minutes: 2, seconds: 3 },
+      expect.anything(),
+    );
   });
 });

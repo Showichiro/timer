@@ -1,0 +1,74 @@
+{
+  "browser": "154.0.4258.48",
+  "results": [
+    "First-use tour traverses all seven steps; Skip dismisses a fresh tour",
+    "Countdown edits, starts, pauses, resumes and resets to configured duration",
+    "Stopwatch add/start/pause/resume/reset",
+    "Reload preserves timer title/duration/types, theme and dismissed tour",
+    "Countdown add/delete and stopwatch delete",
+    "Countdown expires at zero with one alarm; audio assets load under /timer/ and click playback resets",
+    "Pre-migration raw timerList numeric strings/numbers and stopwatch hydrate; editing writes numbers",
+    "390px mobile theme menu reaches winter without horizontal page overflow",
+    "English/Japanese 320px and English 390px layouts fit; Enter/Space controls work with old numeric-string timer",
+    "Manifest/icons/service worker scoped to /timer/; offline reload renders saved cards"
+  ],
+  "audio": {
+    "calls": [
+      {
+        "src": "http://127.0.0.1:4173/timer/clickSound.mp3",
+        "time": 0
+      },
+      {
+        "src": "http://127.0.0.1:4173/timer/timeUpSound.mp3",
+        "time": 0
+      }
+    ],
+    "sources": [
+      {
+        "src": "http://127.0.0.1:4173/timer/clickSound.mp3",
+        "readyState": 4
+      },
+      {
+        "src": "http://127.0.0.1:4173/timer/timeUpSound.mp3",
+        "readyState": 4
+      }
+    ]
+  },
+  "manifest": {
+    "name": "Timer",
+    "short_name": "Timer",
+    "description": "Countdown timer application. You can set as many timers as you want. The timers are stored, so they are not lost even if you close the browser.",
+    "start_url": "index.html",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#42b883",
+    "lang": "ja",
+    "scope": "/timer/",
+    "icons": [
+      {
+        "src": "icon.png",
+        "sizes": "512x512",
+        "purpose": "any"
+      },
+      {
+        "src": "icon-mini.png",
+        "sizes": "192x192",
+        "purpose": "any"
+      }
+    ]
+  },
+  "sw": {
+    "scope": "http://127.0.0.1:4173/timer/",
+    "active": "http://127.0.0.1:4173/timer/sw.js"
+  },
+  "precachedAudio": [
+    "http://127.0.0.1:4173/timer/timeUpSound.mp3?__WB_REVISION__=8c975c0a9877d48b7b6abc92813ce2b2",
+    "http://127.0.0.1:4173/timer/clickSound.mp3?__WB_REVISION__=77a01f17c072473b9e6ff05c1ef3a1fb"
+  ],
+  "overflow": {
+    "width": 390,
+    "scrollWidth": 390
+  },
+  "errors": [],
+  "responses": []
+}

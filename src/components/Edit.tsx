@@ -1,8 +1,10 @@
 import type { FC } from "react";
-import { Button, Card, Select } from "react-daisyui";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import type { TimerValue } from "../types/TimerValue";
+
+const hourOptions = Array.from({ length: 100 }, (_, value) => value);
+const minuteSecondOptions = Array.from({ length: 60 }, (_, value) => value);
 
 type Props = {
   defaultValues: TimerValue;
@@ -23,63 +25,61 @@ export const Edit: FC<Props> = ({
     <form onSubmit={onSubmit(onClickConfirm)}>
       <div className="grid grid-cols-3 gap-2 my-12">
         <div>
-          <Select size="lg" {...register("hours")}>
-            {[...Array(100)].map((_, i) => (
-              <option
-                key={`hours-${
-                  // biome-ignore lint/suspicious/noArrayIndexKey:
-                  i
-                }`}
-                value={i}
-              >
-                {i}
+          <select
+            className="select select-lg w-auto"
+            aria-label={t("timer.unit.hours")}
+            {...register("hours", { valueAsNumber: true })}
+          >
+            {hourOptions.map((value) => (
+              <option key={`hours-${value}`} value={value}>
+                {value}
               </option>
             ))}
-          </Select>
+          </select>
           <span className="ml-2">h</span>
         </div>
         <div>
-          <Select size="lg" {...register("minutes")}>
-            {[...Array(60)].map((_, i) => (
-              <option
-                key={`minutes-${
-                  // biome-ignore lint/suspicious/noArrayIndexKey:
-                  i
-                }`}
-                value={i}
-              >
-                {i}
+          <select
+            className="select select-lg w-auto"
+            aria-label={t("timer.unit.minutes")}
+            {...register("minutes", { valueAsNumber: true })}
+          >
+            {minuteSecondOptions.map((value) => (
+              <option key={`minutes-${value}`} value={value}>
+                {value}
               </option>
             ))}
-          </Select>
+          </select>
 
           <span className="ml-2">m</span>
         </div>
         <div>
-          <Select size="lg" {...register("seconds")}>
-            {[...Array(60)].map((_, i) => (
-              <option
-                key={`minutes-${
-                  // biome-ignore lint/suspicious/noArrayIndexKey:
-                  i
-                }`}
-                value={i}
-              >
-                {i}
+          <select
+            className="select select-lg w-auto"
+            aria-label={t("timer.unit.seconds")}
+            {...register("seconds", { valueAsNumber: true })}
+          >
+            {minuteSecondOptions.map((value) => (
+              <option key={`minutes-${value}`} value={value}>
+                {value}
               </option>
             ))}
-          </Select>
+          </select>
           <span className="ml-2">s</span>
         </div>
       </div>
-      <Card.Actions className="grid grid-cols-2 pt-0.5 gap-x-6 gap-y-6 xl:gap-x-2">
-        <Button size="lg" color="warning" onClick={onClickCancel}>
+      <div className="card-actions grid grid-cols-2 pt-0.5 gap-x-6 gap-y-6 xl:gap-x-2">
+        <button
+          type="button"
+          className="btn btn-lg btn-warning"
+          onClick={onClickCancel}
+        >
           {t("timer.action.cancel")}
-        </Button>
-        <Button type="submit" size="lg" color="primary">
+        </button>
+        <button type="submit" className="btn btn-lg btn-primary">
           {t("timer.action.confirm")}
-        </Button>
-      </Card.Actions>
+        </button>
+      </div>
     </form>
   );
 };

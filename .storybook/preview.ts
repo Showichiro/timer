@@ -3,6 +3,7 @@ import "../src/i18n/configs";
 import "../src/index.css";
 
 const preview: Preview = {
+  tags: ["autodocs"],
   parameters: {
     controls: {
       matchers: {

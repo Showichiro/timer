@@ -1,6 +1,6 @@
 import type { FC } from "react";
 import { useTranslation } from "react-i18next";
-import Joyride from "react-joyride";
+import { Joyride } from "react-joyride";
 
 export const SiteTour: FC = () => {
   const { t } = useTranslation();
@@ -42,10 +42,13 @@ export const SiteTour: FC = () => {
           target: ".timer-theme",
         },
       ]}
+      run
       continuous
       scrollToFirstStep
-      showProgress
-      showSkipButton
+      options={{
+        showProgress: true,
+        buttons: ["back", "close", "primary", "skip"],
+      }}
     />
   );
 };

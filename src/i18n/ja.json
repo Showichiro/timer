@@ -18,5 +18,9 @@
   "header.menu.theme": "テーマカラー",
   "header.menu.timer.title": "タイマーを追加",
   "header.menu.timer.countdown": "カウントダウン",
-  "header.menu.timer.stopwatch": "ストップウォッチ"
+  "header.menu.timer.stopwatch": "ストップウォッチ",
+  "timer.action.edit": "時間を変更",
+  "timer.unit.hours": "時間",
+  "timer.unit.minutes": "分",
+  "timer.unit.seconds": "秒"
 }
