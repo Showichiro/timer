@@ -28,7 +28,7 @@
     "react-hook-form": "7.89.0",
     "react-i18next": "17.0.15",
     "react-joyride": "3.2.0",
-    "react-timer-hook": "4.0.6",
+    "react-timer-hook": "4.0.9",
     "theme-change": "3.0.4"
   },
   "devDependencies": {
